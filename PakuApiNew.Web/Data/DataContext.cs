@@ -9,6 +9,7 @@ namespace PakuApiNew.Web.Data
         {
         }
         public DbSet<Usuario> SubContratistasUsrWebs { get; set; }
+        public DbSet<Ruta> p_Rutas { get; set; }
     }
 }
 
