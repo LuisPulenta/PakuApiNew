@@ -17,16 +17,17 @@ namespace PakuApiNew.Web.Controllers.Api
             _dataContext = dataContext;
         }
 
-        [HttpGet("{ID}")]
-        public async Task<ActionResult<Envio>> GetEnvio(int ID)
+        [HttpGet("GetEnvioByID/{ID}")]
+        public async Task<ActionResult<Data.Entities.Envio>> GetEnvioByID(int ID)
         {
-            Envio envio = await _dataContext.p_Envios
-           .FirstOrDefaultAsync(x => x.ID == ID);
+            Data.Entities.Envio envio = await _dataContext.p_Envios
+                .FirstOrDefaultAsync(o => (o.ID == ID));
+
             if (envio == null)
             {
-                return BadRequest("El IdEnvio no corresponde a ningún envío.");
+                return NotFound();
             }
-            return Ok(envio);
+            return envio;
         }
     }
 }
