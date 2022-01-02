@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using PakuApiNew.Web.Data;
 using PakuApiNew.Web.Data.Entities;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace PakuApiNew.Web.Controllers.Api
@@ -17,16 +18,26 @@ namespace PakuApiNew.Web.Controllers.Api
             _dataContext = dataContext;
         }
 
-        [HttpGet("GetEnvioByID/{ID}")]
-        public async Task<ActionResult<Data.Entities.Envio>> GetEnvioByID(int ID)
+        [HttpPost]
+        [Route("GetEnvios/{IdRuta}")]
+        public async Task<IActionResult> GetEnvios(int IdRuta)
         {
-            Data.Entities.Envio envio = await _dataContext.p_Envios
-                .FirstOrDefaultAsync(o => (o.ID == ID));
-            if (envio == null)
+            if (!ModelState.IsValid)
             {
-                return NotFound();
+                return BadRequest();
             }
-            return envio;
+
+            System.Collections.Generic.List<Envio> envios = await _dataContext.p_Envios
+            .Where(o => (o.NroRuta == IdRuta))
+           .OrderBy(o => o.ID)
+           .ToListAsync();
+
+            if (envios == null)
+            {
+                return BadRequest("No hay Envíos para esta Ruta.");
+            }
+
+            return Ok(envios);
         }
     }
 }
