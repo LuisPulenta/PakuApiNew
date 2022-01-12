@@ -9,9 +9,9 @@ namespace PakuApiNew.Web.Data
         {
         }
         public DbSet<Usuario> SubContratistasUsrWebs { get; set; }
-        public DbSet<Ruta> p_Rutas { get; set; }
-        public DbSet<Parada> p_Paradas { get; set; }
-        public DbSet<Envio> p_Envios { get; set; }
+        public DbSet<Ruta> p_Rutas2 { get; set; }
+        public DbSet<Parada> p_Paradas2{ get; set; }
+        public DbSet<Envio> p_Envios2 { get; set; }
     }
 }
 

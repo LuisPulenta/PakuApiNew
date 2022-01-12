@@ -28,9 +28,34 @@ namespace PakuApiNew.Web.Controllers.Api
             }
 
             System.Collections.Generic.List<Usuario> usuarios = await _dataContext.SubContratistasUsrWebs
-           .Where (o=> (o.CODIGO=="PQ") && (o.HabilitadoWeb==1))
+           .Where (o=> (o.CODIGO=="PQ") && (o.HabilitadoWeb==1)) 
            .ToListAsync();
             return Ok(usuarios);
+        }
+
+        [HttpPost]
+        [Route("GetRutas/{IDUser}")]
+        public async Task<IActionResult> GetRutas(int IDUser)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var rutas = await _dataContext.p_Rutas2
+                .Include (p => p.Paradas)
+                .Include(e => e.Envios)
+           .Where(o => (o.IDUser == IDUser) && (o.Estado == 0))
+
+           .OrderBy(o => o.IDRuta)
+           .ToListAsync();
+
+
+            if (rutas == null)
+            {
+                return BadRequest("No hay Rutas.");
+            }
+            return Ok(rutas);
         }
     }
 }

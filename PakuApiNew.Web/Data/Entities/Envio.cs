@@ -6,7 +6,7 @@ namespace PakuApiNew.Web.Data.Entities
     public class Envio
     {
         [Key]
-        public int ID { get; set; }
+        public int IDEnvio { get; set; }
         public int? IDPROVEEDOR { get; set; }
         public int? AGENCIANR { get; set; }
         public int? ESTADO { get; set; }
@@ -43,7 +43,7 @@ namespace PakuApiNew.Web.Data.Entities
         public string ScaneadoOut { get; set; }
         public int? IngresoDeposito { get; set; }
         public int? SalidaDistribucion { get; set; }
-        public int? NroRuta { get; set; }
+        public int? IDRuta { get; set; }
         public int? NroSecuencia { get; set; }
         public string FechaHoraOptimoCamino { get; set; }
         public int? Bultos { get; set; }
