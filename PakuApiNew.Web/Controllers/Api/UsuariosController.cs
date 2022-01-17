@@ -19,7 +19,6 @@ namespace PakuApiNew.Web.Controllers.Api
         }
 
         [HttpGet]
-
         public async Task<IActionResult> GetUsuarios()
         {
             if (!ModelState.IsValid)
