@@ -13,5 +13,6 @@ namespace PakuApiNew.Web.Data
         public DbSet<Parada> p_Paradas2{ get; set; }
         public DbSet<Envio> p_Envios2 { get; set; }
         public DbSet<Proveedor> p_Proveedores { get; set; }
+        public DbSet<Motivo> p_Motivos { get; set; }
     }
 }
