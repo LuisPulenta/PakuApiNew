@@ -30,7 +30,7 @@ namespace PakuApiNew.Web.Controllers.Api
                 return BadRequest(ModelState);
             }
 
-            Envio envio = await _dataContext.p_Envios.FindAsync(request.IDEnvio);
+            Envio envio = await _dataContext.p_Envios2.FindAsync(request.IDEnvio);
             if (envio == null)
             {
                 return BadRequest("El envío no existe.");
@@ -43,7 +43,7 @@ namespace PakuApiNew.Web.Controllers.Api
 
             try
             {
-                _dataContext.p_Envios.Update(envio);
+                _dataContext.p_Envios2.Update(envio);
                 await _dataContext.SaveChangesAsync();
                 return NoContent();
             }

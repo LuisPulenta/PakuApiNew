@@ -30,7 +30,7 @@ namespace PakuApiNew.Web.Controllers.Api
                 return BadRequest(ModelState);
             }
 
-            Parada parada = await _dataContext.p_Paradas.FindAsync(request.IDParada);
+            Parada parada = await _dataContext.p_Paradas2.FindAsync(request.IDParada);
             if (parada == null)
             {
                 return BadRequest("La parada no existe.");
@@ -42,7 +42,7 @@ namespace PakuApiNew.Web.Controllers.Api
 
             try
             {
-                _dataContext.p_Paradas.Update(parada);
+                _dataContext.p_Paradas2.Update(parada);
                 await _dataContext.SaveChangesAsync();
                 return NoContent();
             }

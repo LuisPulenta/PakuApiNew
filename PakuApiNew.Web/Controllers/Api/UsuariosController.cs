@@ -41,7 +41,7 @@ namespace PakuApiNew.Web.Controllers.Api
                 return BadRequest();
             }
 
-            var rutas = await _dataContext.p_Rutas
+            var rutas = await _dataContext.p_Rutas2
                 .Include (p => p.Paradas)
                 .Include(e => e.Envios)
            .Where(o => (o.IDUser == IDUser) && (o.Estado == 0))
