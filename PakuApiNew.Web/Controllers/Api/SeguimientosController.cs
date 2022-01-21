@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PakuApiNew.Web.Data;
 using PakuApiNew.Web.Data.Entities;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace PakuApiNew.Web.Controllers.Api
@@ -26,6 +27,15 @@ namespace PakuApiNew.Web.Controllers.Api
             _context.p_Seguimiento.Add(request);
             await _context.SaveChangesAsync();
             return Ok(request);
+        }
+
+        [HttpGet]
+        [Route("GetNroRegistroMax")]
+        public async Task<IActionResult> GetNroRegistroMax()
+        {
+            int query = _context.p_Seguimiento.Max(c => c.ID);
+
+            return Ok(query);
         }
     }
 }
