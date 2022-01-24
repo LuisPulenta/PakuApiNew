@@ -38,6 +38,7 @@ namespace PakuApiNew.Web.Controllers.Api
             parada.Estado=request.Estado;
             parada.Fecha = request.Fecha;
             parada.Hora = request.Hora;
+            parada.IdMotivo = request.IdMotivo;
             parada.NotaChofer = request.NotaChofer;
 
             try

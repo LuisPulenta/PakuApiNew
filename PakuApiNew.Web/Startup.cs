@@ -6,7 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PakuApiNew.Helpers;
 using PakuApiNew.Web.Data;
+using PakuApiNew.Web.Helpers;
 
 namespace PakuApiNew.Web
 {
@@ -33,6 +35,9 @@ namespace PakuApiNew.Web
             {
                 cfg.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
+
+            services.AddScoped<IImageHelper, ImageHelper>();
+            services.AddScoped<IFilesHelper, FilesHelper>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

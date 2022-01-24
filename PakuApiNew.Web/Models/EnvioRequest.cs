@@ -1,11 +1,9 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 
-namespace PakuApiNew.Web.Data.Entities
+namespace PakuApiNew.Web.Models
 {
-    public class Envio
+    public class EnvioRequest
     {
-        [Key]
         public int IDEnvio { get; set; }
         public int? IDPROVEEDOR { get; set; }
         public int? AGENCIANR { get; set; }
@@ -69,10 +67,7 @@ namespace PakuApiNew.Web.Data.Entities
         public int? DomicilioCorregidoUsando { get; set; }
         public string UrlFirma { get; set; }
         public string UrlDNI { get; set; }
-        [Display(Name = "DNI")]
-        public string UrlDNIFullPath => string.IsNullOrEmpty(UrlDNI)
-          ? $"http://keypress.serveftp.net:88/PakuApiNew/images/DNI/noimage.png"
-          : $"http://keypress.serveftp.net:88/PakuApiNew{UrlDNI.Substring(1)}";
+        public byte[] ImageArray { get; set; }
         public int? UltimoIdMotivo { get; set; }
         public string UltimaNotaFletero { get; set; }
         public int? IdComprobanteDevolucion { get; set; }
