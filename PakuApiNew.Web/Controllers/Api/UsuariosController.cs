@@ -56,5 +56,36 @@ namespace PakuApiNew.Web.Controllers.Api
             }
             return Ok(rutas);
         }
+
+        [HttpPost]
+        [Route("GetTiposAsignaciones/{UserID}")]
+        public async Task<IActionResult> GetTiposAsignaciones(int UserID)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var tipos = await _dataContext.AsignacionesOTs
+                
+           .Where(o => (o.UserID == UserID) && (o.ESTADOGAOS != "EJB"))
+           .OrderBy(o => o.PROYECTOMODULO)
+           .GroupBy(r => new
+           {
+               r.PROYECTOMODULO,
+           })
+           .Select(g => new
+           {
+               PROYECTOMODULO = g.Key.PROYECTOMODULO,
+           }).ToListAsync();
+
+
+            if (tipos == null)
+            {
+                return BadRequest("No hay Asignaciones para este Usuario.");
+            }
+
+            return Ok(tipos);
+        }
     }
 }

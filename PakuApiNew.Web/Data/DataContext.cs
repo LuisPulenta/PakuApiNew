@@ -15,5 +15,8 @@ namespace PakuApiNew.Web.Data
         public DbSet<Proveedor> p_Proveedores { get; set; }
         public DbSet<Motivo> p_Motivos { get; set; }
         public DbSet<Seguimiento> p_Seguimiento { get; set; }
+        public DbSet<AsignacionesOT> AsignacionesOTs { get; set; }
+        public DbSet<AsignacionesOtsEquiposExtra> AsignacionesOtsEquiposExtras { get; set; }
+        public DbSet<ControlesEquivalencia> ControlesEquivalencias { get; set; }
     }
 }
