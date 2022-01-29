@@ -27,7 +27,7 @@ namespace PakuApiNew.Web.Controllers.Api
             }
 
             System.Collections.Generic.List<Usuario> usuarios = await _dataContext.SubContratistasUsrWebs
-           .Where (o=> (o.CODIGO=="PQ") && (o.HabilitadoWeb==1)) 
+           .Where (o=> (o.CODIGO=="PQ" || o.CODIGO == "TR") && (o.HabilitadoWeb==1)) 
            .ToListAsync();
             return Ok(usuarios);
         }
