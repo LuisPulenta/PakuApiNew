@@ -71,7 +71,7 @@ namespace PakuApiNew.Web.Data.Entities
         public string Enviado { get; set; }
         public int? Cancelado { get; set; }
         public int? Recupero { get; set; }
-        public int? CodigoCierre { get; set; }
+        public int CodigoCierre { get; set; }
         public int? VisitaTecnica { get; set; }
         public string Novedades { get; set; }
         public int? PDFGenerado { get; set; }
@@ -98,6 +98,9 @@ namespace PakuApiNew.Web.Data.Entities
         public string TelefAlternativo2 { get; set; }
         public string TelefAlternativo3 { get; set; }
         public string TelefAlternativo4 { get; set; }
+        public string DESCRIPCION { get; set; }
+        public int CierraEnAPP { get; set; }
+        public int NoMostrarAPP { get; set; }
         public string ClienteCompleto => $"{CLIENTE}-{NOMBRE}";
         public string EntreCalles => $"{ENTRECALLE1} y {ENTRECALLE2}";
     }

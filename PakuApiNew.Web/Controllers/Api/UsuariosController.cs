@@ -66,9 +66,9 @@ namespace PakuApiNew.Web.Controllers.Api
                 return BadRequest();
             }
 
-            var tipos = await _dataContext.AsignacionesOTs
+            var tipos = await _dataContext.AsignacionesOTs2
                 
-           .Where(o => (o.UserID == UserID) && (o.ESTADOGAOS != "EJB"))
+           .Where(o => (o.UserID == UserID) && (o.ESTADOGAOS != "EJB") && (o.CierraEnAPP == 0) && (o.NoMostrarAPP == 0))
            .OrderBy(o => o.PROYECTOMODULO)
            .GroupBy(r => new
            {
@@ -97,11 +97,11 @@ namespace PakuApiNew.Web.Controllers.Api
                 return BadRequest();
             }
 
-            var orders = await _dataContext.AsignacionesOTs
+            var orders = await _dataContext.AsignacionesOTs2
 
            .Where(o => (o.UserID == UserID)
                         && (o.PROYECTOMODULO == ProyectoModulo)
-                        && (o.ESTADOGAOS == "PEN" || o.ESTADOGAOS == "INC" && o.CodigoCierre != 44 && o.CodigoCierre <= 50 && o.CodigoCierre > 40)
+                        && (o.CierraEnAPP == 0) && (o.NoMostrarAPP == 0)
                         )
            .OrderBy(o => o.RECUPIDJOBCARD)
            .GroupBy(r => new
@@ -124,6 +124,9 @@ namespace PakuApiNew.Web.Controllers.Api
                r.SUBCON,
                r.FechaAsignada,
                r.CodigoCierre,
+               r.DESCRIPCION,
+               r.CierraEnAPP,
+               r.NoMostrarAPP,
                r.Novedades,
                r.PROVINCIA,
                r.ReclamoTecnicoID,
@@ -164,6 +167,9 @@ namespace PakuApiNew.Web.Controllers.Api
                SUBCON = g.Key.SUBCON,
                FechaAsignada = g.Key.FechaAsignada,
                CodigoCierre = g.Key.CodigoCierre,
+               DESCRIPCION = g.Key.DESCRIPCION,
+               CierraEnAPP = g.Key.CierraEnAPP,
+               NoMostrarAPP = g.Key.NoMostrarAPP,
                Novedades = g.Key.Novedades,
                PROVINCIA = g.Key.PROVINCIA,
                ReclamoTecnicoID = g.Key.ReclamoTecnicoID,
@@ -184,8 +190,10 @@ namespace PakuApiNew.Web.Controllers.Api
                TelefAlternativo3 = g.Key.TelefAlternativo3,
                TelefAlternativo4 = g.Key.TelefAlternativo4,
 
+
                CantAsign = g.Count(),
-           }).ToListAsync();
+           })
+        .ToListAsync();
 
 
             if (orders == null)
@@ -194,6 +202,30 @@ namespace PakuApiNew.Web.Controllers.Api
             }
 
             return Ok(orders);
+        }
+
+        [HttpPost]
+        [Route("GetCodigosCierre/{ProyectoModulo}")]
+        public async Task<IActionResult> GetCodigosCierre(string ProyectoModulo)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var codigoscierre = await _dataContext.CodigosCierre
+
+           .Where(o => (o.PROYECTOMODULO == ProyectoModulo))
+           .OrderBy(o => o.CodigoCierre)
+           .ToListAsync();
+
+
+            if (codigoscierre == null)
+            {
+                return BadRequest("No hay Códigos de Cierre para este ProyectoModulo.");
+            }
+
+            return Ok(codigoscierre);
         }
     }
 }
