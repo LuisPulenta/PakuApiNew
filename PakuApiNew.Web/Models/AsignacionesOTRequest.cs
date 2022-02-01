@@ -1,11 +1,10 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using PakuApiNew.Web.Data.Entities;
+using System;
 
-namespace PakuApiNew.Web.Data.Entities
+namespace PakuApiNew.Web.Models
 {
-    public class AsignacionesOT
+    public class AsignacionesOTRequest
     {
-        [Key]
         public int IDREGISTRO { get; set; }
         public string SUBAGENTEMERCADO { get; set; }
         public string RECUPIDJOBCARD { get; set; }
@@ -14,6 +13,11 @@ namespace PakuApiNew.Web.Data.Entities
         public string DOMICILIO { get; set; }
         public string ENTRECALLE1 { get; set; }
         public string ENTRECALLE2 { get; set; }
+
+        public int? CantRem { get; set; }
+
+        public byte[] ImageArrayDni { get; set; }
+        public byte[] ImageArrayFirma { get; set; }
         public string CP { get; set; }
         public string ZTECNICO { get; set; }
         public string PROVINCIA { get; set; }
@@ -45,6 +49,7 @@ namespace PakuApiNew.Web.Data.Entities
         public string CAUSANTEC { get; set; }
         public int? PasaDefinitiva { get; set; }
         public DateTime? FechaAsignada { get; set; }
+        public DateTime? FechaInicio { get; set; }
         public int? HsCaptura { get; set; }
         public int? HsAsignada { get; set; }
         public int? HsCumplida { get; set; }
@@ -65,7 +70,6 @@ namespace PakuApiNew.Web.Data.Entities
         public string Partido { get; set; }
         public string EmailCliente { get; set; }
         public string ObservacionCaptura { get; set; }
-        public DateTime? FechaInicio { get; set; }
         public DateTime? FechaEnvio { get; set; }
         public string MarcaModeloId { get; set; }
         public string Enviado { get; set; }
@@ -83,6 +87,7 @@ namespace PakuApiNew.Web.Data.Entities
         public string IdTipoTrabajoRel { get; set; }
         public string Motivos { get; set; }
         public ControlesEquivalencia ControlesEquivalencia { get; set; }
+
         public DateTime? FechaCita { get; set; }
         public string MedioCita { get; set; }
         public string NroSeriesExtras { get; set; }
@@ -94,11 +99,17 @@ namespace PakuApiNew.Web.Data.Entities
         public string Evento2 { get; set; }
         public string Evento3 { get; set; }
         public string Evento4 { get; set; }
+
+
         public string TelefAlternativo1 { get; set; }
         public string TelefAlternativo2 { get; set; }
         public string TelefAlternativo3 { get; set; }
         public string TelefAlternativo4 { get; set; }
+
+        //public int? NoMostrarAPP { get; set; }
+
         public string ClienteCompleto => $"{CLIENTE}-{NOMBRE}";
         public string EntreCalles => $"{ENTRECALLE1} y {ENTRECALLE2}";
+
     }
 }
