@@ -10,6 +10,6 @@ namespace PakuApiNew.Web.Data.Entities
         public string DECO1 { get; set; }
         public string CODIGOEQUIVALENCIA { get; set; }
         public string DESCRIPCION { get; set; }
-        public ICollection<AsignacionesOT2> AsignacionesOTs { get; set; }
+        //public ICollection<AsignacionesOT2> AsignacionesOTs { get; set; }
     }
 }

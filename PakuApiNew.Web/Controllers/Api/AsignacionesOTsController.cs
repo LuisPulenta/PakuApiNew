@@ -78,27 +78,28 @@ namespace PakuApiNew.Web.Controllers.Api
                 }
             }
 
-            oldasignacionesOT.ESTADOGAOS = asignacionesOT.ESTADOGAOS;
-            oldasignacionesOT.UrlDni = imageUrlDNI;
-            oldasignacionesOT.UrlFirma = imageUrlFirma;
             oldasignacionesOT.CodigoCierre = asignacionesOT.CodigoCierre;
-            oldasignacionesOT.FECHACUMPLIDA = asignacionesOT.FECHACUMPLIDA;
-            oldasignacionesOT.HsCumplidaTime = asignacionesOT.HsCumplidaTime;
             oldasignacionesOT.DECO1 = asignacionesOT.DECO1;
             oldasignacionesOT.ESTADO2 = asignacionesOT.ESTADO2;
             oldasignacionesOT.ESTADO3 = asignacionesOT.ESTADO3;
-            oldasignacionesOT.Observacion = asignacionesOT.Observacion;
+            oldasignacionesOT.ESTADOGAOS = asignacionesOT.ESTADOGAOS;
+            oldasignacionesOT.Evento1 = asignacionesOT.Evento1;
+            oldasignacionesOT.Evento2 = asignacionesOT.Evento2;
+            oldasignacionesOT.Evento3 = asignacionesOT.Evento3;
+            oldasignacionesOT.Evento4 = asignacionesOT.Evento4;
             oldasignacionesOT.FechaCita = asignacionesOT.FechaCita;
+            oldasignacionesOT.FECHACUMPLIDA = asignacionesOT.FECHACUMPLIDA;
+            oldasignacionesOT.FechaEvento1 = asignacionesOT.FechaEvento1;
+            oldasignacionesOT.FechaEvento2 = asignacionesOT.FechaEvento2;
+            oldasignacionesOT.FechaEvento3 = asignacionesOT.FechaEvento3;
+            oldasignacionesOT.FechaEvento4 = asignacionesOT.FechaEvento4;
+            oldasignacionesOT.HsCumplidaTime = asignacionesOT.HsCumplidaTime;
             oldasignacionesOT.MedioCita = asignacionesOT.MedioCita;
             oldasignacionesOT.NroSeriesExtras = asignacionesOT.NroSeriesExtras;
-            oldasignacionesOT.Evento1 = asignacionesOT.Evento1;
-            oldasignacionesOT.FechaEvento1 = asignacionesOT.FechaEvento1;
-            oldasignacionesOT.Evento2 = asignacionesOT.Evento2;
-            oldasignacionesOT.FechaEvento2 = asignacionesOT.FechaEvento2;
-            oldasignacionesOT.Evento3 = asignacionesOT.Evento3;
-            oldasignacionesOT.FechaEvento3 = asignacionesOT.FechaEvento3;
-            oldasignacionesOT.Evento4 = asignacionesOT.Evento4;
-            oldasignacionesOT.FechaEvento4 = asignacionesOT.FechaEvento4;
+            oldasignacionesOT.Observacion = asignacionesOT.Observacion;
+            oldasignacionesOT.UrlDni = imageUrlDNI;
+            oldasignacionesOT.UrlFirma = imageUrlFirma;
+
 
             _dataContext.AsignacionesOTs.Update(oldasignacionesOT);
             await _dataContext.SaveChangesAsync();
