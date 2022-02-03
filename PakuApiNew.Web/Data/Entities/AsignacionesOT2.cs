@@ -82,7 +82,7 @@ namespace PakuApiNew.Web.Data.Entities
         public string SectorOperativo { get; set; }
         public string IdTipoTrabajoRel { get; set; }
         public string Motivos { get; set; }
-        public ControlesEquivalencia ControlesEquivalencia { get; set; }
+        //public ControlesEquivalencia ControlesEquivalencia { get; set; }
         public DateTime? FechaCita { get; set; }
         public string MedioCita { get; set; }
         public string NroSeriesExtras { get; set; }
