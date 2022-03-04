@@ -20,6 +20,7 @@ namespace PakuApiNew.Web.Data
         public DbSet<AsignacionesOtsEquiposExtra> AsignacionesOtsEquiposExtras { get; set; }
         public DbSet<ControlesEquivalencia> ControlesEquivalencias { get; set; }
         public DbSet<CodCierre> CodigosCierre { get; set; }
+        public DbSet<FuncionesApp> FuncionesApps { get; set; }
 
     }
 }

@@ -113,6 +113,7 @@ namespace PakuApiNew.Web.Controllers.Api
                r.CP,
                r.ENTRECALLE1,
                r.ENTRECALLE2,
+               r.Partido,
                r.LOCALIDAD,
                r.TELEFONO,
                r.GRXX,
@@ -156,6 +157,7 @@ namespace PakuApiNew.Web.Controllers.Api
                CP = g.Key.CP,
                ENTRECALLE1 = g.Key.ENTRECALLE1,
                ENTRECALLE2 = g.Key.ENTRECALLE2,
+               Partido =g.Key.Partido,
                LOCALIDAD = g.Key.LOCALIDAD,
                TELEFONO = g.Key.TELEFONO,
                GRXX = g.Key.GRXX,
@@ -215,7 +217,7 @@ namespace PakuApiNew.Web.Controllers.Api
 
             var codigoscierre = await _dataContext.CodigosCierre
 
-           .Where(o => (o.PROYECTOMODULO == ProyectoModulo))
+           .Where(o => (o.PROYECTOMODULO == ProyectoModulo) && (o.NoMostrarAPP==0))
            .OrderBy(o => o.CodigoCierre)
            .ToListAsync();
 
@@ -226,6 +228,29 @@ namespace PakuApiNew.Web.Controllers.Api
             }
 
             return Ok(codigoscierre);
+        }
+
+        [HttpPost]
+        [Route("GetFuncionesApps/{ProyectoModulo}")]
+        public async Task<IActionResult> GetFuncionesApps(string ProyectoModulo)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var funcionesApp = await _dataContext.FuncionesApps
+
+           .Where(o => (o.PROYECTOMODULO == ProyectoModulo))
+           .ToListAsync();
+
+
+            if (funcionesApp == null)
+            {
+                return BadRequest("No hay FuncionesApps para este ProyectoModulo.");
+            }
+
+            return Ok(funcionesApp);
         }
     }
 }
