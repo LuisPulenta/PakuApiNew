@@ -230,5 +230,30 @@ namespace PakuApiNew.Web.Controllers.Api
             }
             return Ok(response);
         }
+
+        [HttpPost]
+        [Route("GetControlesEquivalencia/{ProyectoModulo}")]
+        public async Task<IActionResult> GetControlesEquivalencia(string ProyectoModulo)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var controles = await _dataContext.ControlesEquivalencias
+
+           .Where(o => (o.ProyectoModulo == ProyectoModulo)
+                        )
+           .OrderBy(o => o.DESCRIPCION)
+        .ToListAsync();
+
+
+            if (controles == null)
+            {
+                return BadRequest("No hay Controles para éste Proyecto.");
+            }
+
+            return Ok(controles);
+        }
     }
 }
