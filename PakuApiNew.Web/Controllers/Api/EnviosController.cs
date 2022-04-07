@@ -63,6 +63,9 @@ namespace PakuApiNew.Web.Controllers.Api
             envio.UltimoIdMotivo = request.UltimoIdMotivo;
             envio.UltimaNotaFletero = request.UltimaNotaFletero;
             envio.UrlDNI = imageUrl1;
+            envio.LATITUD2 = request.LATITUD2;
+            envio.LONGITUD2 = request.LONGITUD2;
+
 
             try
             {

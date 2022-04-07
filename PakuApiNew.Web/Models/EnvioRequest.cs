@@ -78,5 +78,7 @@ namespace PakuApiNew.Web.Models
         public int? AvonTravelRoute { get; set; }
         public int? AvonSecuenceRoute { get; set; }
         public int? AvonInformarInclusion { get; set; }
+        public decimal? LATITUD2 { get; set; }
+        public decimal? LONGITUD2 { get; set; }
     }
 }
