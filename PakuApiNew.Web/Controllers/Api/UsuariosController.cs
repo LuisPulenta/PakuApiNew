@@ -106,7 +106,7 @@ namespace PakuApiNew.Web.Controllers.Api
            .OrderBy(o => o.RECUPIDJOBCARD)
            .GroupBy(r => new
            {
-               r.RECUPIDJOBCARD,
+               //r.RECUPIDJOBCARD,
                r.CLIENTE,
                r.NOMBRE,
                r.DOMICILIO,
@@ -146,11 +146,13 @@ namespace PakuApiNew.Web.Controllers.Api
                r.TelefAlternativo1,
                r.TelefAlternativo2,
                r.TelefAlternativo3,
-               r.TelefAlternativo4
+               r.TelefAlternativo4,
+               r.ObservacionCaptura,
+               r.ZONA
            })
            .Select(g => new
            {
-               RECUPIDJOBCARD = g.Key.RECUPIDJOBCARD,
+               //RECUPIDJOBCARD = g.Key.RECUPIDJOBCARD,
                CLIENTE = g.Key.CLIENTE,
                NOMBRE = g.Key.NOMBRE,
                DOMICILIO = g.Key.DOMICILIO,
@@ -191,6 +193,8 @@ namespace PakuApiNew.Web.Controllers.Api
                TelefAlternativo2 = g.Key.TelefAlternativo2,
                TelefAlternativo3 = g.Key.TelefAlternativo3,
                TelefAlternativo4 = g.Key.TelefAlternativo4,
+               ObservacionCaptura=g.Key.ObservacionCaptura,
+               ZONA = g.Key.ZONA,
 
 
                CantAsign = g.Count(),
