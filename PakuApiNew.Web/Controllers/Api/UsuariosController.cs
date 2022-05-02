@@ -89,6 +89,37 @@ namespace PakuApiNew.Web.Controllers.Api
         }
 
         [HttpPost]
+        [Route("GetZonas/{UserID}/{ProyectoModulo}")]
+        public async Task<IActionResult> GetZonas(int UserID,string ProyectoModulo)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var zonas = await _dataContext.AsignacionesOTs2
+
+           .Where(o => (o.UserID == UserID) && (o.ESTADOGAOS != "EJB") && (o.CierraEnAPP == 0) && (o.NoMostrarAPP == 0) && (o.PROYECTOMODULO == ProyectoModulo))
+           .OrderBy(o => o.ZONA)
+           .GroupBy(r => new
+           {
+               r.ZONA,
+           })
+           .Select(g => new
+           {
+               ZONA = g.Key.ZONA,
+           }).ToListAsync();
+
+
+            if (zonas == null)
+            {
+                return BadRequest("No hay Zonas para este ProyectoModulo.");
+            }
+
+            return Ok(zonas);
+        }
+
+        [HttpPost]
         [Route("GetAsignaciones/{UserID}/{ProyectoModulo}")]
         public async Task<IActionResult> GetAsignaciones(int UserID, string ProyectoModulo)
         {
