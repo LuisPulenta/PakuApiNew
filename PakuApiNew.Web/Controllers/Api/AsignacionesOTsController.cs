@@ -80,6 +80,8 @@ namespace PakuApiNew.Web.Controllers.Api
 
             oldasignacionesOT.CodigoCierre = asignacionesOT.CodigoCierre;
             oldasignacionesOT.DECO1 = asignacionesOT.DECO1;
+            oldasignacionesOT.MarcaModeloId = asignacionesOT.MarcaModeloId;
+            oldasignacionesOT.CMODEM1 = asignacionesOT.CMODEM1;
             oldasignacionesOT.ESTADO2 = asignacionesOT.ESTADO2;
             oldasignacionesOT.ESTADO3 = asignacionesOT.ESTADO3;
             oldasignacionesOT.ESTADOGAOS = asignacionesOT.ESTADOGAOS;

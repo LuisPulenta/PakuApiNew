@@ -12,5 +12,6 @@ namespace PakuApiNew.Web.Data.Entities
         public int HabilitaFirma { get; set; }
         public int SerieObligatoria { get; set; }
         public int CodigoFinal { get; set; }
+        public int HabilitaOtroRecupero { get; set; }
     }
 }
