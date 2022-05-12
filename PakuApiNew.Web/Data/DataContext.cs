@@ -21,6 +21,7 @@ namespace PakuApiNew.Web.Data
         public DbSet<ControlesEquivalencia> ControlesEquivalencias { get; set; }
         public DbSet<CodCierre> CodigosCierre { get; set; }
         public DbSet<FuncionesApp> FuncionesApps { get; set; }
+        public DbSet<WebSesion> WebSesions { get; set; }
 
     }
 }
