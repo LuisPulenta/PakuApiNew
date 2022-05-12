@@ -56,77 +56,23 @@ namespace PakuApiNew.Web.Controllers.Api
             return Ok(response);
         }
 
-        [HttpGet("GetLastWebSesion/{id}")]
-        public async Task<IActionResult> GetLastWebSesion([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var webSesion = await _dataContext.WebSesions
-                .FirstOrDefaultAsync(o => o.NROCONEXION == id);
-
-            if (webSesion == null)
-            {
-                return NotFound();
-            }
-
-            var response = new WebSesionRequest
-            {
-                CONECTAVERAGE = webSesion.CONECTAVERAGE,
-                ID_WS = webSesion.ID_WS,
-                IP = webSesion.IP,
-                LOGINDATE = webSesion.LOGINDATE,
-                LOGINTIME = webSesion.LOGINTIME,
-                LOGOUTDATE = webSesion.LOGOUTDATE,
-                LOGOUTTIME = webSesion.LOGOUTTIME,
-                MODULO = webSesion.MODULO,
-                NROCONEXION = webSesion.NROCONEXION,
-                USUARIO = webSesion.USUARIO,
-                Version=webSesion.Version
-                
-            };
-
-            return Ok(response);
-        }
-
+              
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutWebSesion([FromRoute] int id, [FromBody] WebSesionRequest request)
+        [Route("PutWebSesion")]
+        public async Task<IActionResult> PutWebSesion(int id)
         {
-            if (!ModelState.IsValid)
+            WebSesion oldWebSesion = await _dataContext.WebSesions
+                .FirstOrDefaultAsync(t => t.NROCONEXION == id);
+
+            if (oldWebSesion == null)
             {
-                return BadRequest(ModelState);
+                return BadRequest("WebSesion no existe.");
             }
 
-            if (id != request.NROCONEXION)
-            {
-                return BadRequest();
-            }
-
-            //var oldWebSesion = await _dataContext.WebSesions.FindAsync(request.NROCONEXION);
-
-
-            //if (oldWebSesion == null)
-            //{
-            //return BadRequest("WebSesion no existe.");
-            //}
-
-            var newWebSesion = new WebSesion
-            {
-                ID_WS = request.ID_WS,
-                NROCONEXION = request.NROCONEXION,
-                CONECTAVERAGE = request.CONECTAVERAGE,
-                IP = request.IP,
-                LOGINDATE = request.LOGINDATE,
-                LOGINTIME = request.LOGINTIME,
-                LOGOUTDATE = DateTime.Now,
-                LOGOUTTIME = Convert.ToInt32(DateTime.Now.ToString("hhmmss")),
-                MODULO = request.MODULO,
-                USUARIO = request.USUARIO,
-                Version=request.Version
-            };
-            _dataContext.WebSesions.Update(newWebSesion);
+            oldWebSesion.LOGOUTDATE = DateTime.Now;
+            oldWebSesion.LOGOUTTIME = (DateTime.Now.Hour*3600 + DateTime.Now.Minute*60 + DateTime.Now.Second)*100 ;
+            
+            _dataContext.WebSesions.Update(oldWebSesion);
             await _dataContext.SaveChangesAsync();
             return Ok(true);
         }
