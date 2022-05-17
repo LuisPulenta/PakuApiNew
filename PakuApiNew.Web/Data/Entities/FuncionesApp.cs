@@ -13,5 +13,7 @@ namespace PakuApiNew.Web.Data.Entities
         public int SerieObligatoria { get; set; }
         public int CodigoFinal { get; set; }
         public int HabilitaOtroRecupero { get; set; }
+        public int HabilitaCambioModelo { get; set; }
+        
     }
 }

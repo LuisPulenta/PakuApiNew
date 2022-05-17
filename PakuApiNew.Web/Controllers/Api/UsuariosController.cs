@@ -178,7 +178,7 @@ namespace PakuApiNew.Web.Controllers.Api
                r.TelefAlternativo2,
                r.TelefAlternativo3,
                r.TelefAlternativo4,
-               r.ObservacionCaptura,
+               //r.ObservacionCaptura,
                r.ZONA
            })
            .Select(g => new
@@ -224,7 +224,7 @@ namespace PakuApiNew.Web.Controllers.Api
                TelefAlternativo2 = g.Key.TelefAlternativo2,
                TelefAlternativo3 = g.Key.TelefAlternativo3,
                TelefAlternativo4 = g.Key.TelefAlternativo4,
-               ObservacionCaptura=g.Key.ObservacionCaptura,
+               //ObservacionCaptura=g.Key.ObservacionCaptura,
                ZONA = g.Key.ZONA,
 
 
