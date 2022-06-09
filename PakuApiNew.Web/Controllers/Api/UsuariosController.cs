@@ -119,6 +119,38 @@ namespace PakuApiNew.Web.Controllers.Api
             return Ok(zonas);
         }
 
+
+        [HttpPost]
+        [Route("GetCarteras/{UserID}/{ProyectoModulo}")]
+        public async Task<IActionResult> GetCarteras(int UserID, string ProyectoModulo)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var zonas = await _dataContext.AsignacionesOTs2
+
+           .Where(o => (o.UserID == UserID) && (o.ESTADOGAOS != "EJB") && (o.CierraEnAPP == 0) && (o.NoMostrarAPP == 0) && (o.PROYECTOMODULO == ProyectoModulo))
+           .OrderBy(o => o.ZONA)
+           .GroupBy(r => new
+           {
+               r.Motivos,
+           })
+           .Select(g => new
+           {
+               Motivos = g.Key.Motivos,
+           }).ToListAsync();
+
+
+            if (zonas == null)
+            {
+                return BadRequest("No hay Carteras para este ProyectoModulo.");
+            }
+
+            return Ok(zonas);
+        }
+
         [HttpPost]
         [Route("GetAsignaciones/{UserID}/{ProyectoModulo}")]
         public async Task<IActionResult> GetAsignaciones(int UserID, string ProyectoModulo)
@@ -162,6 +194,7 @@ namespace PakuApiNew.Web.Controllers.Api
                r.Novedades,
                r.PROVINCIA,
                r.ReclamoTecnicoID,
+               r.Motivos,
                r.FechaCita,
                r.MedioCita,
                r.NroSeriesExtras,
@@ -208,6 +241,7 @@ namespace PakuApiNew.Web.Controllers.Api
                Novedades = g.Key.Novedades,
                PROVINCIA = g.Key.PROVINCIA,
                ReclamoTecnicoID = g.Key.ReclamoTecnicoID,
+               Motivos=g.Key.Motivos,
                FechaCita = g.Key.FechaCita,
                MedioCita = g.Key.MedioCita,
                NroSeriesExtras = g.Key.NroSeriesExtras,
