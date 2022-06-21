@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PakuApiNew.Helpers;
 using PakuApiNew.Web.Data;
 using PakuApiNew.Web.Data.Entities;
@@ -77,7 +78,19 @@ namespace PakuApiNew.Web.Controllers.Api
             {
                 return BadRequest(exception.Message);
             }
+        }
 
+        [HttpGet("GetEnvioByIdEnvio/{codigo}")]
+        public async Task<ActionResult<Data.Entities.Envio>> GetEnvioByIdEnvio(int codigo)
+        {
+            Data.Entities.Envio envio = await _dataContext.p_Envios2
+                .FirstOrDefaultAsync(o => o.IDEnvio == codigo);
+
+            if (envio == null)
+            {
+                return NotFound();
+            }
+            return envio;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PakuApiNew.Web.Data;
 using PakuApiNew.Web.Data.Entities;
 using System;
@@ -51,7 +52,21 @@ namespace PakuApiNew.Web.Controllers.Api
             {
                 return BadRequest(exception.Message);
             }
-
         }
+
+ 
+        [HttpGet("GetParadaByIDParada/{codigo}")]
+        public async Task<ActionResult<Data.Entities.Parada>> GetParadaByIDParada(int codigo)
+        {
+            Data.Entities.Parada parada = await _dataContext.p_Paradas2
+                .FirstOrDefaultAsync(o => o.IDParada == codigo);
+
+            if (parada == null)
+            {
+                return NotFound();
+            }
+            return parada;
+        }
+
     }
 }
