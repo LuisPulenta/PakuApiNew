@@ -22,6 +22,7 @@ namespace PakuApiNew.Web.Data
         public DbSet<CodCierre> CodigosCierre { get; set; }
         public DbSet<FuncionesApp> FuncionesApps { get; set; }
         public DbSet<WebSesion> WebSesions { get; set; }
+        public DbSet<Modulo> Modulos { get; set; }
 
     }
 }
