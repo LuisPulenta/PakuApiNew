@@ -98,6 +98,7 @@ namespace PakuApiNew.Web.Data.Entities
         public string TelefAlternativo2 { get; set; }
         public string TelefAlternativo3 { get; set; }
         public string TelefAlternativo4 { get; set; }
+        public int? elegir { get; set; }
         public string ClienteCompleto => $"{CLIENTE}-{NOMBRE}";
         public string EntreCalles => $"{ENTRECALLE1} y {ENTRECALLE2}";
     }

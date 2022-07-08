@@ -106,6 +106,8 @@ namespace PakuApiNew.Web.Models
         public string TelefAlternativo3 { get; set; }
         public string TelefAlternativo4 { get; set; }
 
+        public int? elegir { get; set; }
+
         //public int? NoMostrarAPP { get; set; }
 
         public string ClienteCompleto => $"{CLIENTE}-{NOMBRE}";
