@@ -101,6 +101,7 @@ namespace PakuApiNew.Web.Controllers.Api
             oldasignacionesOT.Observacion = asignacionesOT.Observacion;
             oldasignacionesOT.UrlDni = imageUrlDNI;
             oldasignacionesOT.UrlFirma = imageUrlFirma;
+            oldasignacionesOT.SMARTCARD = asignacionesOT.SMARTCARD;
 
 
             _dataContext.AsignacionesOTs.Update(oldasignacionesOT);
