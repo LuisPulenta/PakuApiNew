@@ -260,5 +260,74 @@ namespace PakuApiNew.Web.Controllers.Api
 
             return Ok(controles);
         }
+
+        [HttpPost]
+        [Route("GetGrafico01Asignados")]
+        public async Task<IActionResult> GetGrafico01Asignados(Grafico01Request grafico01Request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var orders = await _dataContext.AsignacionesOTs
+           .Where(o => (o.UserID == grafico01Request.UserID)
+           && (o.PROYECTOMODULO == grafico01Request.Proyecto)
+           && (o.FechaAsignada.Value.Month == grafico01Request.Mes)
+           && (o.FechaAsignada.Value.Year == grafico01Request.Anio)
+           )
+           .OrderBy(o => o.PROYECTOMODULO)
+           .GroupBy(r => new
+           {
+               r.PROYECTOMODULO,
+           })
+           .Select(g => new
+           {
+               Asignados = g.Count(),
+           }).ToListAsync();
+
+
+            if (orders == null)
+            {
+                return BadRequest("No hay Ordenes de Trabajo para este Usuario.");
+            }
+
+            return Ok(orders);
+        }
+
+        [HttpPost]
+        [Route("GetGrafico01Ejecutados")]
+        public async Task<IActionResult> GetGrafico01Ejecutados(Grafico01Request grafico01Request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var orders = await _dataContext.AsignacionesOTs
+           .Where(o => (o.UserID == grafico01Request.UserID)
+           && (o.PROYECTOMODULO == grafico01Request.Proyecto)
+            && (o.ESTADOGAOS == "EJB")
+           && (o.HsCumplidaTime.Value.Month == grafico01Request.Mes)
+           && (o.HsCumplidaTime.Value.Year == grafico01Request.Anio)
+           )
+           .OrderBy(o => o.PROYECTOMODULO)
+           .GroupBy(r => new
+           {
+               r.PROYECTOMODULO,
+           })
+           .Select(g => new
+           {
+               Ejecutados = g.Count(),
+           }).ToListAsync();
+
+
+            if (orders == null)
+            {
+                return BadRequest("No hay Ordenes de Trabajo para este Usuario.");
+            }
+
+            return Ok(orders);
+        }
     }
 }
