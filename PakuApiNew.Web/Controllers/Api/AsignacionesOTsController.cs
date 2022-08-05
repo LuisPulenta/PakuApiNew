@@ -283,7 +283,7 @@ namespace PakuApiNew.Web.Controllers.Api
            })
            .Select(g => new
            {
-               Asignados = g.Count(),
+               Cantidad = g.Count(),
            }).ToListAsync();
 
 
@@ -318,7 +318,7 @@ namespace PakuApiNew.Web.Controllers.Api
            })
            .Select(g => new
            {
-               Ejecutados = g.Count(),
+               Cantidad = g.Count(),
            }).ToListAsync();
 
 
