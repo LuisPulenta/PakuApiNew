@@ -166,6 +166,7 @@ namespace PakuApiNew.Web.Controllers.Api
            .Where(o => (o.UserID == UserID)
                         && (o.PROYECTOMODULO == ProyectoModulo)
                         && (o.CierraEnAPP == 0) && (o.NoMostrarAPP == 0)
+                        && (o.BAJASISTEMA == 0)
                         )
            .OrderBy(o => o.RECUPIDJOBCARD)
            .GroupBy(r => new
