@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using PakuApiNew.Web.Data;
 using PakuApiNew.Web.Data.Entities;
+using PakuApiNew.Web.Models;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -320,6 +321,32 @@ namespace PakuApiNew.Web.Controllers.Api
             }
 
             return Ok(funcionesApp);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutUsuario([FromRoute] int id, [FromBody] ChangePasswordRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != request.IDUser)
+            {
+                return BadRequest();
+            }
+
+            var oldUsuario = await _dataContext.SubContratistasUsrWebs.FindAsync(request.IDUser);
+            if (oldUsuario == null)
+            {
+                return BadRequest("El Usuario no existe.");
+            }
+
+            oldUsuario.USRCONTRASENA = request.NewPassword;
+
+            _dataContext.SubContratistasUsrWebs.Update(oldUsuario);
+            await _dataContext.SaveChangesAsync();
+            return Ok();
         }
     }
 }
