@@ -10,6 +10,7 @@ namespace PakuApiNew.Web.Controllers.Api
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class UsuariosController : ControllerBase
     {
         private readonly DataContext _dataContext;
