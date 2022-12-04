@@ -7,5 +7,6 @@ namespace PakuApiNew.Web.Data.Entities
         [Key]
         public int ID { get; set; }
         public string MOTIVO { get; set; }
+        public int MuestraParaEntregado { get; set; }
     }
 }
