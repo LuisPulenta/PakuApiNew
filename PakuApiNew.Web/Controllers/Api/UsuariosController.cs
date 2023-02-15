@@ -174,6 +174,7 @@ namespace PakuApiNew.Web.Controllers.Api
            {
                //r.RECUPIDJOBCARD,
                r.CLIENTE,
+               r.Documento,
                r.NOMBRE,
                r.DOMICILIO,
                r.CP,
@@ -221,6 +222,7 @@ namespace PakuApiNew.Web.Controllers.Api
            {
                //RECUPIDJOBCARD = g.Key.RECUPIDJOBCARD,
                CLIENTE = g.Key.CLIENTE,
+               Documento = g.Key.Documento,
                NOMBRE = g.Key.NOMBRE,
                DOMICILIO = g.Key.DOMICILIO,
                CP = g.Key.CP,
@@ -298,6 +300,7 @@ namespace PakuApiNew.Web.Controllers.Api
            {
                //r.RECUPIDJOBCARD,
                r.CLIENTE,
+               r.Documento,
                r.NOMBRE,
                r.DOMICILIO,
                r.CP,
@@ -345,6 +348,7 @@ namespace PakuApiNew.Web.Controllers.Api
            {
                //RECUPIDJOBCARD = g.Key.RECUPIDJOBCARD,
                CLIENTE = g.Key.CLIENTE,
+               Documento = g.Key.Documento,
                NOMBRE = g.Key.NOMBRE,
                DOMICILIO = g.Key.DOMICILIO,
                CP = g.Key.CP,
