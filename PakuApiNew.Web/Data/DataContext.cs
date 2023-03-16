@@ -23,6 +23,8 @@ namespace PakuApiNew.Web.Data
         public DbSet<FuncionesApp> FuncionesApps { get; set; }
         public DbSet<WebSesion> WebSesions { get; set; }
         public DbSet<Modulo> Modulos { get; set; }
-
+        public DbSet<SubContratistasUsrVehiculo> SubContratistasUsrVehiculos { get; set; }
+        public DbSet<Vista_AcumuladosEquiposSinDevolver> Vista_AcumuladosEquiposSinDevolver { get; set; }
+        public DbSet<AsignacionesOtsTurno> AsignacionesOtsTurnos { get; set; }
     }
 }
