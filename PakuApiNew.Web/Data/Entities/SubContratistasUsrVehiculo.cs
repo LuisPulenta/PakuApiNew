@@ -20,5 +20,18 @@ namespace PakuApiNew.Web.Data.Entities
         public string Gas { get; set; }
         public DateTime? FechaObleaGas { get; set; }
         public DateTime? UltimaActualizacion { get; set; }
+        [Display(Name = "Foto")]
+        
+        public string DniFrenteFullPath => DNIFrente == string.Empty
+           ? $"http://fleetsa.serveftp.net:88/PakuApiNew/images/DNI/noimage.png"
+            : $"http://fleetsa.serveftp.net:88/PakuApiNew{DNIFrente.Substring(1)}";
+
+        public string DniDorsoFullPath => DNIDorso == string.Empty
+           ? $"http://fleetsa.serveftp.net:88/PakuApiNew/images/DNI/noimage.png"
+            : $"http://fleetsa.serveftp.net:88/PakuApiNew{DNIFrente.Substring(1)}";
+
+        public string CarnetConducirFullPath => CarnetConducir == string.Empty
+           ? $"http://fleetsa.serveftp.net:88/PakuApiNew/images/DNI/noimage.png"
+            : $"http://fleetsa.serveftp.net:88/PakuApiNew{DNIFrente.Substring(1)}";
     }
 }
