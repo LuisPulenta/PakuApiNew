@@ -28,10 +28,10 @@ namespace PakuApiNew.Web.Data.Entities
 
         public string DniDorsoFullPath => DNIDorso == string.Empty
            ? $"http://fleetsa.serveftp.net:88/PakuApiNew/images/DNI/noimage.png"
-            : $"http://fleetsa.serveftp.net:88/PakuApiNew{DNIFrente.Substring(1)}";
+            : $"http://fleetsa.serveftp.net:88/PakuApiNew{DNIDorso.Substring(1)}";
 
         public string CarnetConducirFullPath => CarnetConducir == string.Empty
            ? $"http://fleetsa.serveftp.net:88/PakuApiNew/images/DNI/noimage.png"
-            : $"http://fleetsa.serveftp.net:88/PakuApiNew{DNIFrente.Substring(1)}";
+            : $"http://fleetsa.serveftp.net:88/PakuApiNew{CarnetConducir.Substring(1)}";
     }
 }
