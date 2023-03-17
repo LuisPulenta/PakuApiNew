@@ -102,8 +102,18 @@ namespace PakuApiNew.Web.Controllers.Api
               
         [HttpPut("{id}")]
         [Route("PutSubContratistasUsrVehiculo")]
-        public async Task<IActionResult> PutSubContratistasUsrVehiculo(SubContratistasUsrVehiculoRequest request)
+        public async Task<IActionResult> PutSubContratistasUsrVehiculo([FromRoute] int id, [FromBody] SubContratistasUsrVehiculoRequest request)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != request.ID)
+            {
+                return BadRequest();
+            }
+
             SubContratistasUsrVehiculo oldSubContratistasUsrVehiculo = await _dataContext.SubContratistasUsrVehiculos
                 .FirstOrDefaultAsync(t => t.ID == request.ID);
 
@@ -113,45 +123,53 @@ namespace PakuApiNew.Web.Controllers.Api
             }
 
             //DNIFrente
-            var imageDNIFrenteUrl = string.Empty;
-            var stream1 = new MemoryStream(request.DNIFrenteImageArray);
-            var guid1 = Guid.NewGuid().ToString();
-            var file1 = $"{guid1}.jpg";
-            var folder1 = "wwwroot\\images\\MisDatos";
-            var fullPath1 = $"~/images/MisDatos/{file1}";
-            var response1 = _filesHelper.UploadPhoto(stream1, folder1, file1);
-
-            if (response1)
+            string imageDNIFrenteUrl = oldSubContratistasUsrVehiculo.DNIFrente;
+            if (request.DNIFrenteImageArray != null && request.DNIFrenteImageArray.Length > 0)
             {
-                imageDNIFrenteUrl = fullPath1;
+                var stream1 = new MemoryStream(request.DNIFrenteImageArray);
+                var guid1 = Guid.NewGuid().ToString();
+                var file1 = $"{guid1}.jpg";
+                var folder1 = "wwwroot\\images\\MisDatos";
+                var fullPath1 = $"~/images/MisDatos/{file1}";
+                var response1 = _filesHelper.UploadPhoto(stream1, folder1, file1);
+                if (response1)
+                {
+                    imageDNIFrenteUrl = fullPath1;
+                }
             }
 
             //DNIDorso
-            var imageDNIDorsoUrl = string.Empty;
-            var stream2 = new MemoryStream(request.DNIDorsoImageArray);
-            var guid2 = Guid.NewGuid().ToString();
-            var file2 = $"{guid2}.jpg";
-            var folder2 = "wwwroot\\images\\MisDatos";
-            var fullPath2 = $"~/images/MisDatos/{file2}";
-            var response2 = _filesHelper.UploadPhoto(stream2, folder2, file2);
-
-            if (response2)
+            string imageDNIDorsoUrl = oldSubContratistasUsrVehiculo.DNIDorso;
+            if (request.DNIDorsoImageArray != null && request.DNIDorsoImageArray.Length > 0)
             {
-                imageDNIDorsoUrl = fullPath2;
+                var stream2 = new MemoryStream(request.DNIDorsoImageArray);
+                var guid2 = Guid.NewGuid().ToString();
+                var file2 = $"{guid2}.jpg";
+                var folder2 = "wwwroot\\images\\MisDatos";
+                var fullPath2 = $"~/images/MisDatos/{file2}";
+                var response2 = _filesHelper.UploadPhoto(stream2, folder2, file2);
+
+                if (response2)
+                {
+                    imageDNIDorsoUrl = fullPath2;
+                }
             }
 
             //CarnetConducir
-            var imageCarnetConducirUrl = string.Empty;
-            var stream3 = new MemoryStream(request.CarnetConducirImageArray);
-            var guid3 = Guid.NewGuid().ToString();
-            var file3 = $"{guid3}.jpg";
-            var folder3 = "wwwroot\\images\\MisDatos";
-            var fullPath3 = $"~/images/MisDatos/{file3}";
-            var response3 = _filesHelper.UploadPhoto(stream3, folder3, file3);
-
-            if (response3)
+            string imageCarnetConducirUrl = oldSubContratistasUsrVehiculo.CarnetConducir;
+            if (request.CarnetConducirImageArray != null && request.CarnetConducirImageArray.Length > 0)
             {
-                imageCarnetConducirUrl = fullPath3;
+                var stream3 = new MemoryStream(request.CarnetConducirImageArray);
+                var guid3 = Guid.NewGuid().ToString();
+                var file3 = $"{guid3}.jpg";
+                var folder3 = "wwwroot\\images\\MisDatos";
+                var fullPath3 = $"~/images/MisDatos/{file3}";
+                var response3 = _filesHelper.UploadPhoto(stream3, folder3, file3);
+
+                if (response3)
+                {
+                    imageCarnetConducirUrl = fullPath3;
+                }
             }
 
             oldSubContratistasUsrVehiculo.ModeloAnio = request.ModeloAnio;
