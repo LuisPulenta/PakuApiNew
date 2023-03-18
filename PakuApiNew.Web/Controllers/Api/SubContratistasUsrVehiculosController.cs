@@ -211,7 +211,7 @@ namespace PakuApiNew.Web.Controllers.Api
             }
             else
             {
-                return Ok("No hay datos");
+                return Ok();
             }
         }
     }
