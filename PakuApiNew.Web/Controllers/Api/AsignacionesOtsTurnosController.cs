@@ -42,5 +42,46 @@ namespace PakuApiNew.Web.Controllers.Api
                 return Ok();
             }
         }
+
+        [HttpPost]
+        public async Task<IActionResult> PostTurno([FromBody] AsignacionesOtsTurno request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            _dataContext.AsignacionesOtsTurnos.Add(request);
+            await _dataContext.SaveChangesAsync();
+            return Ok();
+        }
+
+        [HttpPut("{id}")]
+        [Route("PutTurno")]
+        public async Task<IActionResult> PutTurno([FromRoute] int id, [FromBody] AsignacionesOtsTurno request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != request.IDTurno)
+            {
+                return BadRequest();
+            }
+
+            AsignacionesOtsTurno oldTurno = await _dataContext.AsignacionesOtsTurnos
+                .FirstOrDefaultAsync(t => t.IdUser == request.IdUser);
+
+            if (oldTurno == null)
+            {
+                return BadRequest("Turno no existe.");
+            }
+
+            oldTurno.Concluido = request.Concluido;
+
+            _dataContext.AsignacionesOtsTurnos.Update(oldTurno);
+            await _dataContext.SaveChangesAsync();
+            return Ok(true);
+        }
     }
 }
