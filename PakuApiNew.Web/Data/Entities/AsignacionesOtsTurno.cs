@@ -12,7 +12,7 @@ namespace PakuApiNew.Web.Data.Entities
         public DateTime? FechaTurno { get; set; }
         public int? HoraTurno { get; set; }
         public DateTime? FechaConfirmaTurno { get; set; }
-        public int IDUserConfirma { get; set; }
+        public int? IDUserConfirma { get; set; }
         public DateTime? FechaTurnoConfirmado { get; set; }
         public int? HoraTurnoConfirmado { get; set; }
         public string Concluido { get; set; }
