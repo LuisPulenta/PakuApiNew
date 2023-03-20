@@ -70,7 +70,7 @@ namespace PakuApiNew.Web.Controllers.Api
             }
 
             AsignacionesOtsTurno oldTurno = await _dataContext.AsignacionesOtsTurnos
-                .FirstOrDefaultAsync(t => t.IdUser == request.IdUser);
+                .FirstOrDefaultAsync(t => t.IDTurno == request.IDTurno);
 
             if (oldTurno == null)
             {
