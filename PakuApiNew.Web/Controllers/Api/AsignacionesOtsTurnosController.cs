@@ -83,5 +83,19 @@ namespace PakuApiNew.Web.Controllers.Api
             await _dataContext.SaveChangesAsync();
             return Ok(true);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTurno(int id)
+        {
+            AsignacionesOtsTurno turno = await _dataContext.AsignacionesOtsTurnos.FindAsync(id);
+            if (turno == null)
+            {
+                return NotFound();
+            }
+
+            _dataContext.AsignacionesOtsTurnos.Remove(turno);
+            await _dataContext.SaveChangesAsync();
+            return NoContent();
+        }
     }
 }
