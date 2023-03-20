@@ -23,5 +23,8 @@ namespace PakuApiNew.Web.Models
         public byte[] DNIFrenteImageArray { get; set; }
         public byte[] DNIDorsoImageArray { get; set; }
         public byte[] CarnetConducirImageArray { get; set; }
+        public string NroPolizaSeguro { get; set; }
+        public DateTime? FechaVencPoliza { get; set; }
+        public string Compania { get; set; }
     }
 }

@@ -21,7 +21,10 @@ namespace PakuApiNew.Web.Data.Entities
         public DateTime? FechaObleaGas { get; set; }
         public DateTime? UltimaActualizacion { get; set; }
         [Display(Name = "Foto")]
-        
+        public string NroPolizaSeguro { get; set; }
+        public DateTime? FechaVencPoliza { get; set; }
+        public string Compania { get; set; }
+
         public string DniFrenteFullPath => DNIFrente == string.Empty
            ? $"http://fleetsa.serveftp.net:88/PakuApiNew/images/DNI/noimage.png"
             : $"http://fleetsa.serveftp.net:88/PakuApiNew{DNIFrente.Substring(1)}";

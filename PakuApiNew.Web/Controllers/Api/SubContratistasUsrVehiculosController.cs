@@ -90,7 +90,10 @@ namespace PakuApiNew.Web.Controllers.Api
                 Gas = request.Gas,
                 IdUser = request.IdUser,
                 Marca = request.Marca,
-                ID = 0
+                ID = 0,
+                NroPolizaSeguro=request.NroPolizaSeguro,
+                FechaVencPoliza=request.FechaVencPoliza,
+                Compania=request.Compania,
             };
 
 
@@ -184,9 +187,10 @@ namespace PakuApiNew.Web.Controllers.Api
             oldSubContratistasUsrVehiculo.Gas = request.Gas;
             oldSubContratistasUsrVehiculo.IdUser = request.IdUser;
             oldSubContratistasUsrVehiculo.Marca = request.Marca;
+            oldSubContratistasUsrVehiculo.NroPolizaSeguro = request.NroPolizaSeguro;
+            oldSubContratistasUsrVehiculo.FechaVencPoliza = request.FechaVencPoliza;
+            oldSubContratistasUsrVehiculo.Compania = request.Compania;
             
-
-
             _dataContext.SubContratistasUsrVehiculos.Update(oldSubContratistasUsrVehiculo);
             await _dataContext.SaveChangesAsync();
             return Ok(true);
