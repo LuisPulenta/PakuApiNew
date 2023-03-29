@@ -277,10 +277,9 @@ namespace PakuApiNew.Web.Controllers.Api
 
 
             //LinkVtv
-            string imageVTV = oldSubContratistasUsrVehiculo.LinkVtv;
+            string imageLinkVtvUrl = oldSubContratistasUsrVehiculo.LinkVtv;
             if (request.LinkVtvImageArray != null && request.LinkVtvImageArray.Length > 0)
             {
-                var imageLinkVtvUrl = string.Empty;
                 var stream4 = new MemoryStream(request.LinkVtvImageArray);
                 var guid4 = Guid.NewGuid().ToString();
                 var file4 = $"{guid4}.jpg";
@@ -295,10 +294,9 @@ namespace PakuApiNew.Web.Controllers.Api
             }
 
             //LinkObleaGas
-            string imageObleaGas = oldSubContratistasUsrVehiculo.LinkObleaGas;
+            string imageLinkObleaGasUrl = oldSubContratistasUsrVehiculo.LinkObleaGas;
             if (request.LinkObleaGasImageArray != null && request.LinkObleaGasImageArray.Length > 0)
             {
-                var imageLinkObleaGasUrl = string.Empty;
                 var stream5 = new MemoryStream(request.LinkObleaGasImageArray);
                 var guid5 = Guid.NewGuid().ToString();
                 var file5 = $"{guid5}.jpg";
@@ -313,10 +311,9 @@ namespace PakuApiNew.Web.Controllers.Api
             }
 
             //LinkPolizaSeguro
-            string imagePolizaSeguro = oldSubContratistasUsrVehiculo.LinkPolizaSeguro;
+            string imageLinkPolizaSeguroUrl = oldSubContratistasUsrVehiculo.LinkPolizaSeguro;
             if (request.LinkPolizaSeguroImageArray != null && request.LinkPolizaSeguroImageArray.Length > 0)
             {
-                var imageLinkPolizaSeguroUrl = string.Empty;
                 var stream6 = new MemoryStream(request.LinkPolizaSeguroImageArray);
                 var guid6 = Guid.NewGuid().ToString();
                 var file6 = $"{guid6}.pdf";
@@ -331,10 +328,9 @@ namespace PakuApiNew.Web.Controllers.Api
             }
 
             //LinkCedulaSeguro
-            string imageCedula = oldSubContratistasUsrVehiculo.LinkCedula;
+            string imageLinkCedulaSeguroUrl = oldSubContratistasUsrVehiculo.LinkCedula;
             if (request.LinkCedulaImageArray != null && request.LinkCedulaImageArray.Length > 0)
             {
-                var imageLinkCedulaSeguroUrl = string.Empty;
                 var stream7 = new MemoryStream(request.LinkCedulaImageArray);
                 var guid7 = Guid.NewGuid().ToString();
                 var file7 = $"{guid7}.pdf";
@@ -349,10 +345,9 @@ namespace PakuApiNew.Web.Controllers.Api
             }
 
             //LinkAntecedentes
-            string imageAntecedentes = oldSubContratistasUsrVehiculo.LinkAntecedentes;
+            string imageLinkAntecedentesSeguroUrl = oldSubContratistasUsrVehiculo.LinkAntecedentes;
             if (request.LinkAntecedentesImageArray != null && request.LinkAntecedentesImageArray.Length > 0)
             {
-                var imageLinkAntecedentesSeguroUrl = string.Empty;
                 var stream8 = new MemoryStream(request.LinkAntecedentesImageArray);
                 var guid8 = Guid.NewGuid().ToString();
                 var file8 = $"{guid8}.pdf";
@@ -381,11 +376,11 @@ namespace PakuApiNew.Web.Controllers.Api
             oldSubContratistasUsrVehiculo.NroPolizaSeguro = request.NroPolizaSeguro;
             oldSubContratistasUsrVehiculo.FechaVencPoliza = request.FechaVencPoliza;
             oldSubContratistasUsrVehiculo.Compania = request.Compania;
-            oldSubContratistasUsrVehiculo.LinkVtv = imageVTV;
-            oldSubContratistasUsrVehiculo.LinkObleaGas = imageObleaGas;
-            oldSubContratistasUsrVehiculo.LinkPolizaSeguro = imagePolizaSeguro;
-            oldSubContratistasUsrVehiculo.LinkCedula = imageCedula;
-            oldSubContratistasUsrVehiculo.LinkAntecedentes = imageAntecedentes;
+            oldSubContratistasUsrVehiculo.LinkVtv = imageLinkVtvUrl;
+            oldSubContratistasUsrVehiculo.LinkObleaGas = imageLinkObleaGasUrl;
+            oldSubContratistasUsrVehiculo.LinkPolizaSeguro = imageLinkPolizaSeguroUrl;
+            oldSubContratistasUsrVehiculo.LinkCedula = imageLinkCedulaSeguroUrl;
+            oldSubContratistasUsrVehiculo.LinkAntecedentes = imageLinkAntecedentesSeguroUrl;
 
 
 
