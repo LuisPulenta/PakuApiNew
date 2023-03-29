@@ -74,6 +74,76 @@ namespace PakuApiNew.Web.Controllers.Api
                 imageCarnetConducirUrl = fullPath3;
             }
 
+            //LinkVtv
+            var imageLinkVtvUrl = string.Empty;
+            var stream4 = new MemoryStream(request.LinkVtvImageArray);
+            var guid4 = Guid.NewGuid().ToString();
+            var file4 = $"{guid4}.jpg";
+            var folder4 = "wwwroot\\images\\MisDatos";
+            var fullPath4 = $"~/images/MisDatos/{file4}";
+            var response4 = _filesHelper.UploadPhoto(stream4, folder4, file4);
+
+            if (response4)
+            {
+                imageLinkVtvUrl = fullPath4;
+            }
+
+            //LinkObleaGas
+            var imageLinkObleaGasUrl = string.Empty;
+            var stream5 = new MemoryStream(request.LinkObleaGasImageArray);
+            var guid5 = Guid.NewGuid().ToString();
+            var file5 = $"{guid5}.jpg";
+            var folder5 = "wwwroot\\images\\MisDatos";
+            var fullPath5 = $"~/images/MisDatos/{file5}";
+            var response5 = _filesHelper.UploadPhoto(stream5, folder5, file5);
+
+            if (response5)
+            {
+                imageLinkObleaGasUrl = fullPath5;
+            }
+
+
+            //LinkPolizaSeguro
+            var imageLinkPolizaSeguroUrl = string.Empty;
+            var stream6 = new MemoryStream(request.LinkPolizaSeguroImageArray);
+            var guid6 = Guid.NewGuid().ToString();
+            var file6 = $"{guid6}.pdf";
+            var folder6 = "wwwroot\\images\\MisDatos";
+            var fullPath6 = $"~/images/MisDatos/{file6}";
+            var response6 = _filesHelper.UploadPhoto(stream6, folder6, file6);
+
+            if (response6)
+            {
+                imageLinkPolizaSeguroUrl = fullPath6;
+            }
+
+            //LinkCedulaSeguro
+            var imageLinkCedulaSeguroUrl = string.Empty;
+            var stream7 = new MemoryStream(request.LinkCedulaImageArray);
+            var guid7 = Guid.NewGuid().ToString();
+            var file7 = $"{guid7}.pdf";
+            var folder7 = "wwwroot\\images\\MisDatos";
+            var fullPath7 = $"~/images/MisDatos/{file7}";
+            var response7 = _filesHelper.UploadPhoto(stream7, folder7, file7);
+
+            if (response7)
+            {
+                imageLinkCedulaSeguroUrl = fullPath7;
+            }
+
+            //LinkAntecedentes
+            var imageLinkAntecedentesSeguroUrl = string.Empty;
+            var stream8 = new MemoryStream(request.LinkAntecedentesImageArray);
+            var guid8 = Guid.NewGuid().ToString();
+            var file8 = $"{guid8}.pdf";
+            var folder8 = "wwwroot\\images\\MisDatos";
+            var fullPath8 = $"~/images/MisDatos/{file8}";
+            var response8 = _filesHelper.UploadPhoto(stream8, folder8, file8);
+
+            if (response8)
+            {
+                imageLinkAntecedentesSeguroUrl = fullPath8;
+            }
 
 
             var subContratistasUsrVehiculo = new SubContratistasUsrVehiculo
@@ -94,6 +164,11 @@ namespace PakuApiNew.Web.Controllers.Api
                 NroPolizaSeguro=request.NroPolizaSeguro,
                 FechaVencPoliza=request.FechaVencPoliza,
                 Compania=request.Compania,
+                LinkVtv= imageLinkVtvUrl,
+                LinkObleaGas=imageLinkObleaGasUrl,
+                LinkPolizaSeguro=imageLinkPolizaSeguroUrl,
+                LinkCedula=imageLinkCedulaSeguroUrl,
+                LinkAntecedentes=imageLinkAntecedentesSeguroUrl
             };
 
 
@@ -175,6 +250,78 @@ namespace PakuApiNew.Web.Controllers.Api
                 }
             }
 
+
+            //LinkVtv
+            var imageLinkVtvUrl = string.Empty;
+            var stream4 = new MemoryStream(request.LinkVtvImageArray);
+            var guid4 = Guid.NewGuid().ToString();
+            var file4 = $"{guid4}.jpg";
+            var folder4 = "wwwroot\\images\\MisDatos";
+            var fullPath4 = $"~/images/MisDatos/{file4}";
+            var response4 = _filesHelper.UploadPhoto(stream4, folder4, file4);
+
+            if (response4)
+            {
+                imageLinkVtvUrl = fullPath4;
+            }
+
+            //LinkObleaGas
+            var imageLinkObleaGasUrl = string.Empty;
+            var stream5 = new MemoryStream(request.LinkObleaGasImageArray);
+            var guid5 = Guid.NewGuid().ToString();
+            var file5 = $"{guid5}.jpg";
+            var folder5 = "wwwroot\\images\\MisDatos";
+            var fullPath5 = $"~/images/MisDatos/{file5}";
+            var response5 = _filesHelper.UploadPhoto(stream5, folder5, file5);
+
+            if (response5)
+            {
+                imageLinkObleaGasUrl = fullPath5;
+            }
+
+
+            //LinkPolizaSeguro
+            var imageLinkPolizaSeguroUrl = string.Empty;
+            var stream6 = new MemoryStream(request.LinkPolizaSeguroImageArray);
+            var guid6 = Guid.NewGuid().ToString();
+            var file6 = $"{guid6}.pdf";
+            var folder6 = "wwwroot\\images\\MisDatos";
+            var fullPath6 = $"~/images/MisDatos/{file6}";
+            var response6 = _filesHelper.UploadPhoto(stream6, folder6, file6);
+
+            if (response6)
+            {
+                imageLinkPolizaSeguroUrl = fullPath6;
+            }
+
+            //LinkCedulaSeguro
+            var imageLinkCedulaSeguroUrl = string.Empty;
+            var stream7 = new MemoryStream(request.LinkCedulaImageArray);
+            var guid7 = Guid.NewGuid().ToString();
+            var file7 = $"{guid7}.pdf";
+            var folder7 = "wwwroot\\images\\MisDatos";
+            var fullPath7 = $"~/images/MisDatos/{file7}";
+            var response7 = _filesHelper.UploadPhoto(stream7, folder7, file7);
+
+            if (response7)
+            {
+                imageLinkCedulaSeguroUrl = fullPath7;
+            }
+
+            //LinkAntecedentes
+            var imageLinkAntecedentesSeguroUrl = string.Empty;
+            var stream8 = new MemoryStream(request.LinkAntecedentesImageArray);
+            var guid8 = Guid.NewGuid().ToString();
+            var file8 = $"{guid8}.pdf";
+            var folder8 = "wwwroot\\images\\MisDatos";
+            var fullPath8 = $"~/images/MisDatos/{file8}";
+            var response8 = _filesHelper.UploadPhoto(stream8, folder8, file8);
+
+            if (response8)
+            {
+                imageLinkAntecedentesSeguroUrl = fullPath8;
+            }
+
             oldSubContratistasUsrVehiculo.ModeloAnio = request.ModeloAnio;
             oldSubContratistasUsrVehiculo.UltimaActualizacion = request.UltimaActualizacion;
             oldSubContratistasUsrVehiculo.CarnetConducir = imageCarnetConducirUrl;
@@ -190,7 +337,14 @@ namespace PakuApiNew.Web.Controllers.Api
             oldSubContratistasUsrVehiculo.NroPolizaSeguro = request.NroPolizaSeguro;
             oldSubContratistasUsrVehiculo.FechaVencPoliza = request.FechaVencPoliza;
             oldSubContratistasUsrVehiculo.Compania = request.Compania;
-            
+            oldSubContratistasUsrVehiculo.LinkVtv = imageLinkVtvUrl;
+            oldSubContratistasUsrVehiculo.LinkObleaGas = imageLinkObleaGasUrl;
+            oldSubContratistasUsrVehiculo.LinkPolizaSeguro = imageLinkPolizaSeguroUrl;
+            oldSubContratistasUsrVehiculo.LinkCedula = imageLinkCedulaSeguroUrl;
+            oldSubContratistasUsrVehiculo.LinkAntecedentes = imageLinkAntecedentesSeguroUrl;
+
+
+
             _dataContext.SubContratistasUsrVehiculos.Update(oldSubContratistasUsrVehiculo);
             await _dataContext.SaveChangesAsync();
             return Ok(true);

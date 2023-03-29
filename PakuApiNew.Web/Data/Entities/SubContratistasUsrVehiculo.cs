@@ -24,6 +24,11 @@ namespace PakuApiNew.Web.Data.Entities
         public string NroPolizaSeguro { get; set; }
         public DateTime? FechaVencPoliza { get; set; }
         public string Compania { get; set; }
+        public string LinkVtv    { get; set; }
+        public string LinkObleaGas { get; set; }
+        public string LinkPolizaSeguro { get; set; }
+        public string LinkCedula { get; set; }
+        public string LinkAntecedentes { get; set; }
 
         public string DniFrenteFullPath => DNIFrente == string.Empty
            ? $"http://fleetsa.serveftp.net:88/PakuApiNew/images/DNI/noimage.png"
@@ -36,5 +41,25 @@ namespace PakuApiNew.Web.Data.Entities
         public string CarnetConducirFullPath => CarnetConducir == string.Empty
            ? $"http://fleetsa.serveftp.net:88/PakuApiNew/images/DNI/noimage.png"
             : $"http://fleetsa.serveftp.net:88/PakuApiNew{CarnetConducir.Substring(1)}";
+
+        public string LinkVtvFullPath => LinkVtv == string.Empty
+          ? $"http://fleetsa.serveftp.net:88/PakuApiNew/images/DNI/noimage.png"
+           : $"http://fleetsa.serveftp.net:88/PakuApiNew{LinkVtv.Substring(1)}";
+
+        public string LinkObleaGasFullPath => LinkObleaGas == string.Empty
+          ? $"http://fleetsa.serveftp.net:88/PakuApiNew/images/DNI/noimage.png"
+           : $"http://fleetsa.serveftp.net:88/PakuApiNew{LinkObleaGas.Substring(1)}";
+
+        public string LinkPolizaSeguroFullPath => LinkPolizaSeguro == string.Empty
+         ? $"http://fleetsa.serveftp.net:88/PakuApiNew/images/DNI/noimage.png"
+          : $"http://fleetsa.serveftp.net:88/PakuApiNew{LinkPolizaSeguro.Substring(1)}";
+
+        public string LinkCedulaFullPath => LinkCedula == string.Empty
+         ? $"http://fleetsa.serveftp.net:88/PakuApiNew/images/DNI/noimage.png"
+          : $"http://fleetsa.serveftp.net:88/PakuApiNew{LinkCedula.Substring(1)}";
+
+        public string LinkAntecedentesFullPath => LinkAntecedentes == string.Empty
+         ? $"http://fleetsa.serveftp.net:88/PakuApiNew/images/DNI/noimage.png"
+          : $"http://fleetsa.serveftp.net:88/PakuApiNew{LinkAntecedentes.Substring(1)}";
     }
 }

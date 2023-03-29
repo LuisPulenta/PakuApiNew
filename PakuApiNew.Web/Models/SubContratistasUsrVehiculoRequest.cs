@@ -26,5 +26,10 @@ namespace PakuApiNew.Web.Models
         public string NroPolizaSeguro { get; set; }
         public DateTime? FechaVencPoliza { get; set; }
         public string Compania { get; set; }
+        public byte[] LinkVtvImageArray { get; set; }
+        public byte[] LinkObleaGasImageArray { get; set; }
+        public byte[] LinkPolizaSeguroImageArray { get; set; }
+        public byte[] LinkCedulaImageArray { get; set; }
+        public byte[] LinkAntecedentesImageArray { get; set; }
     }
 }
