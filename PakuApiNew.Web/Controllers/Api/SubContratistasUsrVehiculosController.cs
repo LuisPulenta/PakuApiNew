@@ -76,10 +76,9 @@ namespace PakuApiNew.Web.Controllers.Api
 
             //LinkVtv
 
-            string imageLinkVtvUrl = String.Empty;
+            string imageLinkVtvUrl = "";
             if (request.LinkVtvImageArray != null && request.LinkVtvImageArray.Length > 0)
             {
-                imageLinkVtvUrl = string.Empty;
                 var stream4 = new MemoryStream(request.LinkVtvImageArray);
                 var guid4 = Guid.NewGuid().ToString();
                 var file4 = $"{guid4}.jpg";
@@ -94,10 +93,9 @@ namespace PakuApiNew.Web.Controllers.Api
             }
 
             //LinkObleaGas
-            string imageLinkObleaGasUrl = String.Empty;
+            string imageLinkObleaGasUrl = "";
             if (request.LinkVtvImageArray != null && request.LinkVtvImageArray.Length > 0)
             {
-                imageLinkObleaGasUrl = string.Empty;
                 var stream5 = new MemoryStream(request.LinkObleaGasImageArray);
                 var guid5 = Guid.NewGuid().ToString();
                 var file5 = $"{guid5}.jpg";
@@ -113,10 +111,9 @@ namespace PakuApiNew.Web.Controllers.Api
 
 
             //LinkPolizaSeguro
-            string imageLinkPolizaSeguroUrl = String.Empty;
+            string imageLinkPolizaSeguroUrl = "";
             if (request.LinkVtvImageArray != null && request.LinkVtvImageArray.Length > 0)
             {
-                imageLinkPolizaSeguroUrl = string.Empty;
                 var stream6 = new MemoryStream(request.LinkPolizaSeguroImageArray);
                 var guid6 = Guid.NewGuid().ToString();
                 var file6 = $"{guid6}.pdf";
@@ -131,10 +128,9 @@ namespace PakuApiNew.Web.Controllers.Api
             }
 
             //LinkCedulaSeguro
-            string imageLinkCedulaSeguroUrl = String.Empty;
+            string imageLinkCedulaSeguroUrl = "";
             if (request.LinkVtvImageArray != null && request.LinkVtvImageArray.Length > 0)
             {
-                imageLinkCedulaSeguroUrl = string.Empty;
                 var stream7 = new MemoryStream(request.LinkCedulaImageArray);
                 var guid7 = Guid.NewGuid().ToString();
                 var file7 = $"{guid7}.pdf";
@@ -149,10 +145,9 @@ namespace PakuApiNew.Web.Controllers.Api
             }
 
             //LinkAntecedentes
-            string imageLinkAntecedentesSeguroUrl = String.Empty;
+            string imageLinkAntecedentesSeguroUrl = "";
             if (request.LinkVtvImageArray != null && request.LinkVtvImageArray.Length > 0)
             {
-                imageLinkAntecedentesSeguroUrl = string.Empty;
                 var stream8 = new MemoryStream(request.LinkAntecedentesImageArray);
                 var guid8 = Guid.NewGuid().ToString();
                 var file8 = $"{guid8}.pdf";
