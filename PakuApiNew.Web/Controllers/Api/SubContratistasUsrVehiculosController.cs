@@ -122,7 +122,7 @@ namespace PakuApiNew.Web.Controllers.Api
 
             //LinkPolizaSeguro
             string imageLinkPolizaSeguroUrl = "";
-            if (request.LinkVtvImageArray != null && request.LinkVtvImageArray.Length > 0)
+            if (request.LinkVtvImageArray != null && request.LinkVtvImageArray.Length > 1)
             {
                 var stream6 = new MemoryStream(request.LinkPolizaSeguroImageArray);
                 var guid6 = Guid.NewGuid().ToString();
@@ -139,7 +139,7 @@ namespace PakuApiNew.Web.Controllers.Api
 
             //LinkCedulaSeguro
             string imageLinkCedulaSeguroUrl = "";
-            if (request.LinkVtvImageArray != null && request.LinkVtvImageArray.Length > 0)
+            if (request.LinkVtvImageArray != null && request.LinkVtvImageArray.Length > 1)
             {
                 var stream7 = new MemoryStream(request.LinkCedulaImageArray);
                 var guid7 = Guid.NewGuid().ToString();
@@ -156,7 +156,7 @@ namespace PakuApiNew.Web.Controllers.Api
 
             //LinkAntecedentes
             string imageLinkAntecedentesSeguroUrl = "";
-            if (request.LinkVtvImageArray != null && request.LinkVtvImageArray.Length > 0)
+            if (request.LinkVtvImageArray != null && request.LinkVtvImageArray.Length > 1)
             {
                 var stream8 = new MemoryStream(request.LinkAntecedentesImageArray);
                 var guid8 = Guid.NewGuid().ToString();
@@ -312,7 +312,7 @@ namespace PakuApiNew.Web.Controllers.Api
 
             //LinkPolizaSeguro
             string imageLinkPolizaSeguroUrl = oldSubContratistasUsrVehiculo.LinkPolizaSeguro;
-            if (request.LinkPolizaSeguroImageArray != null && request.LinkPolizaSeguroImageArray.Length > 0)
+            if (request.LinkPolizaSeguroImageArray != null && request.LinkPolizaSeguroImageArray.Length > 1)
             {
                 var stream6 = new MemoryStream(request.LinkPolizaSeguroImageArray);
                 var guid6 = Guid.NewGuid().ToString();
@@ -329,7 +329,7 @@ namespace PakuApiNew.Web.Controllers.Api
 
             //LinkCedulaSeguro
             string imageLinkCedulaSeguroUrl = oldSubContratistasUsrVehiculo.LinkCedula;
-            if (request.LinkCedulaImageArray != null && request.LinkCedulaImageArray.Length > 0)
+            if (request.LinkCedulaImageArray != null && request.LinkCedulaImageArray.Length > 1)
             {
                 var stream7 = new MemoryStream(request.LinkCedulaImageArray);
                 var guid7 = Guid.NewGuid().ToString();
@@ -346,7 +346,7 @@ namespace PakuApiNew.Web.Controllers.Api
 
             //LinkAntecedentes
             string imageLinkAntecedentesSeguroUrl = oldSubContratistasUsrVehiculo.LinkAntecedentes;
-            if (request.LinkAntecedentesImageArray != null && request.LinkAntecedentesImageArray.Length > 0)
+            if (request.LinkAntecedentesImageArray != null && request.LinkAntecedentesImageArray.Length > 1)
             {
                 var stream8 = new MemoryStream(request.LinkAntecedentesImageArray);
                 var guid8 = Guid.NewGuid().ToString();
