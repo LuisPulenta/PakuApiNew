@@ -34,7 +34,7 @@ namespace PakuApiNew.Web.Controllers.Api
 
             //DNIFrente
             string imageDNIFrenteUrl = "";
-            if (request.LinkVtvImageArray != null && request.LinkVtvImageArray.Length > 0)
+            if (request.DNIFrenteImageArray != null && request.DNIFrenteImageArray.Length > 0)
             {
                 var stream1 = new MemoryStream(request.DNIFrenteImageArray);
                 var guid1 = Guid.NewGuid().ToString();
@@ -52,7 +52,7 @@ namespace PakuApiNew.Web.Controllers.Api
 
             //DNIDorso
             string imageDNIDorsoUrl = "";
-            if (request.LinkVtvImageArray != null && request.LinkVtvImageArray.Length > 0)
+            if (request.DNIDorsoImageArray != null && request.DNIDorsoImageArray.Length > 0)
             {
                 var stream2 = new MemoryStream(request.DNIDorsoImageArray);
                 var guid2 = Guid.NewGuid().ToString();
@@ -69,7 +69,7 @@ namespace PakuApiNew.Web.Controllers.Api
 
             //CarnetConducir
             string imageCarnetConducirUrl = "";
-            if (request.LinkVtvImageArray != null && request.LinkVtvImageArray.Length > 0)
+            if (request.CarnetConducirImageArray != null && request.CarnetConducirImageArray.Length > 0)
             {
                 var stream3 = new MemoryStream(request.CarnetConducirImageArray);
                 var guid3 = Guid.NewGuid().ToString();
@@ -104,7 +104,7 @@ namespace PakuApiNew.Web.Controllers.Api
 
             //LinkObleaGas
             string imageLinkObleaGasUrl = "";
-            if (request.LinkVtvImageArray != null && request.LinkVtvImageArray.Length > 0)
+            if (request.LinkObleaGasImageArray != null && request.LinkObleaGasImageArray.Length > 0)
             {
                 var stream5 = new MemoryStream(request.LinkObleaGasImageArray);
                 var guid5 = Guid.NewGuid().ToString();
@@ -122,7 +122,7 @@ namespace PakuApiNew.Web.Controllers.Api
 
             //LinkPolizaSeguro
             string imageLinkPolizaSeguroUrl = "";
-            if (request.LinkVtvImageArray != null && request.LinkVtvImageArray.Length > 1)
+            if (request.LinkPolizaSeguroImageArray != null && request.LinkPolizaSeguroImageArray.Length > 1)
             {
                 var stream6 = new MemoryStream(request.LinkPolizaSeguroImageArray);
                 var guid6 = Guid.NewGuid().ToString();
@@ -139,7 +139,7 @@ namespace PakuApiNew.Web.Controllers.Api
 
             //LinkCedulaSeguro
             string imageLinkCedulaSeguroUrl = "";
-            if (request.LinkVtvImageArray != null && request.LinkVtvImageArray.Length > 1)
+            if (request.LinkCedulaImageArray != null && request.LinkCedulaImageArray.Length > 1)
             {
                 var stream7 = new MemoryStream(request.LinkCedulaImageArray);
                 var guid7 = Guid.NewGuid().ToString();
@@ -156,7 +156,7 @@ namespace PakuApiNew.Web.Controllers.Api
 
             //LinkAntecedentes
             string imageLinkAntecedentesSeguroUrl = "";
-            if (request.LinkVtvImageArray != null && request.LinkVtvImageArray.Length > 1)
+            if (request.LinkAntecedentesImageArray != null && request.LinkAntecedentesImageArray.Length > 1)
             {
                 var stream8 = new MemoryStream(request.LinkAntecedentesImageArray);
                 var guid8 = Guid.NewGuid().ToString();
