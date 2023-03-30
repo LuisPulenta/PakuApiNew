@@ -172,7 +172,7 @@ namespace PakuApiNew.Web.Controllers.Api
            .OrderBy(o => o.RECUPIDJOBCARD)
            .GroupBy(r => new
            {
-               //r.RECUPIDJOBCARD,
+               r.RECUPIDJOBCARD,
                r.CLIENTE,
                r.Documento,
                r.NOMBRE,
@@ -220,7 +220,7 @@ namespace PakuApiNew.Web.Controllers.Api
            })
            .Select(g => new
            {
-               //RECUPIDJOBCARD = g.Key.RECUPIDJOBCARD,
+               RECUPIDJOBCARD = g.Key.RECUPIDJOBCARD,
                CLIENTE = g.Key.CLIENTE,
                Documento = g.Key.Documento,
                NOMBRE = g.Key.NOMBRE,
@@ -298,7 +298,7 @@ namespace PakuApiNew.Web.Controllers.Api
            .OrderBy(o => o.RECUPIDJOBCARD)
            .GroupBy(r => new
            {
-               //r.RECUPIDJOBCARD,
+               r.RECUPIDJOBCARD,
                r.CLIENTE,
                r.Documento,
                r.NOMBRE,
@@ -346,7 +346,7 @@ namespace PakuApiNew.Web.Controllers.Api
            })
            .Select(g => new
            {
-               //RECUPIDJOBCARD = g.Key.RECUPIDJOBCARD,
+               RECUPIDJOBCARD = g.Key.RECUPIDJOBCARD,
                CLIENTE = g.Key.CLIENTE,
                Documento = g.Key.Documento,
                NOMBRE = g.Key.NOMBRE,
