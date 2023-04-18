@@ -107,7 +107,8 @@ namespace PakuApiNew.Web.Models
         public string TelefAlternativo4 { get; set; }
 
         public int? elegir { get; set; }
-        public int? ModificadoAPP { get; set; }
+        
+        public int ModificadoAPP { get; set; }
 
         //public int? NoMostrarAPP { get; set; }
 

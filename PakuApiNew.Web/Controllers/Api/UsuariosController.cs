@@ -219,7 +219,7 @@ namespace PakuApiNew.Web.Controllers.Api
                r.TelefAlternativo4,
                r.ObservacionCaptura,
                r.ZONA,
-               r.ModificadoAPP
+               //r.ModificadoApp
            })
            .Select(g => new
            {
@@ -268,7 +268,7 @@ namespace PakuApiNew.Web.Controllers.Api
                TelefAlternativo4 = g.Key.TelefAlternativo4,
                ObservacionCaptura=g.Key.ObservacionCaptura,
                ZONA = g.Key.ZONA,
-               ModificadoAPP=g.Key.ModificadoAPP,
+               //ModificadoApp = g.Key.ModificadoApp,
 
 
                CantAsign = g.Count(),
@@ -340,7 +340,7 @@ namespace PakuApiNew.Web.Controllers.Api
               r.TelefAlternativo4,
               r.ObservacionCaptura,
               r.ZONA,
-              r.ModificadoAPP
+              //r.ModificadoApp
           })
           .Select(g => new
           {
@@ -389,7 +389,7 @@ namespace PakuApiNew.Web.Controllers.Api
               TelefAlternativo4 = g.Key.TelefAlternativo4,
               ObservacionCaptura=g.Key.ObservacionCaptura,
               ZONA = g.Key.ZONA,
-              ModificadoAPP =g.Key.ModificadoAPP,
+              //modificadoapp = g.Key.ModificadoApp,
 
 
               CantAsign = g.Count(),
@@ -472,7 +472,7 @@ namespace PakuApiNew.Web.Controllers.Api
                r.TelefAlternativo4,
                r.ObservacionCaptura,
                r.ZONA,
-               r.ModificadoAPP,
+               //r.ModificadoApp,
            })
            .Select(g => new
            {
@@ -521,7 +521,7 @@ namespace PakuApiNew.Web.Controllers.Api
                TelefAlternativo4 = g.Key.TelefAlternativo4,
                ObservacionCaptura=g.Key.ObservacionCaptura,
                ZONA = g.Key.ZONA,
-               ModificadoAPP = g.Key.ModificadoAPP,
+               //ModificadoApp = g.Key.ModificadoApp,
 
 
                CantAsign = g.Count(),
