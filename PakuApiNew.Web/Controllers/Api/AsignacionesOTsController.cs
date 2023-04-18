@@ -103,6 +103,7 @@ namespace PakuApiNew.Web.Controllers.Api
             oldasignacionesOT.UrlFirma = imageUrlFirma;
             oldasignacionesOT.SMARTCARD = asignacionesOT.SMARTCARD;
             oldasignacionesOT.elegir = asignacionesOT.elegir;
+            oldasignacionesOT.ModificadoAPP = asignacionesOT.ModificadoAPP;
 
 
             _dataContext.AsignacionesOTs.Update(oldasignacionesOT);
@@ -229,6 +230,7 @@ namespace PakuApiNew.Web.Controllers.Api
                     UrlFirma2 = control.UrlFirma2,
                     UserID = control.UserID,
                     ZTECNICO = control.ZTECNICO,
+                    ModificadoAPP=control.ModificadoAPP,
 
              };
                 response.Add(asignResponse);
