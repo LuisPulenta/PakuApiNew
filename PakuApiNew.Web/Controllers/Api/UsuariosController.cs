@@ -170,6 +170,7 @@ namespace PakuApiNew.Web.Controllers.Api
                         && (o.PROYECTOMODULO == ProyectoModulo)
                         && (o.CierraEnAPP == 0) && (o.NoMostrarAPP == 0)
                         && (o.BAJASISTEMA == 0)
+                        && (o.ESTADOGAOS != "EJB")
                         )
            .OrderBy(o => o.RECUPIDJOBCARD)
            .GroupBy(r => new
@@ -291,6 +292,7 @@ namespace PakuApiNew.Web.Controllers.Api
                         && (o.PROYECTOMODULO == ProyectoModulo)
                         && (o.CierraEnAPP == 0) && (o.NoMostrarAPP == 0)
                         && (o.BAJASISTEMA == 0)
+                        && (o.ESTADOGAOS != "EJB")
                         )
            .OrderBy(o => o.RECUPIDJOBCARD)
            .GroupBy(r => new
@@ -413,6 +415,7 @@ namespace PakuApiNew.Web.Controllers.Api
                        && (o.PROYECTOMODULO == ProyectoModulo)
                        && (o.CierraEnAPP == 0) && (o.NoMostrarAPP == 0)
                        && (o.BAJASISTEMA == 0)
+                       && (o.ESTADOGAOS != "EJB")
                        )
           .OrderBy(o => o.RECUPIDJOBCARD)
           .GroupBy(r => new

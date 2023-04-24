@@ -123,8 +123,9 @@ namespace PakuApiNew.Web.Controllers.Api
 
             var asignaciones = await _dataContext.AsignacionesOTs2
 
-                   .Where(o => (o.ReclamoTecnicoID == asignRequest.ReclamoTecnicoID
-                   && o.CLIENTE == asignRequest.CLIENTE
+                   .Where(o => (
+                   //o.ReclamoTecnicoID == asignRequest.ReclamoTecnicoID &&
+                   o.CLIENTE == asignRequest.CLIENTE
                    && o.UserID == asignRequest.UserID
                    && o.CierraEnAPP==0
                    && o.NoMostrarAPP==0
