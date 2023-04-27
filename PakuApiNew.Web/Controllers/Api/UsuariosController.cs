@@ -770,6 +770,7 @@ namespace PakuApiNew.Web.Controllers.Api
            {
                r.CLIENTE,
                r.FECHACUMPLIDA,
+               r.HsCumplida,
                r.Documento,
                r.NOMBRE,
                r.DOMICILIO,
@@ -819,6 +820,7 @@ namespace PakuApiNew.Web.Controllers.Api
            {
                CLIENTE = g.Key.CLIENTE,
                FECHACUMPLIDA=g.Key.FECHACUMPLIDA,
+               HsCumplida = g.Key.HsCumplida,
                Documento = g.Key.Documento,
                NOMBRE = g.Key.NOMBRE,
                DOMICILIO = g.Key.DOMICILIO,
