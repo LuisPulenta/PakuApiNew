@@ -240,6 +240,134 @@ namespace PakuApiNew.Web.Controllers.Api
         }
 
         [HttpPost]
+        [Route("GetAutonumericosEjb")]
+        public async Task<IActionResult> GetAutonumericosEjb(AsignRequest asignRequest)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+
+            var asignaciones = await _dataContext.AsignacionesOTs2
+
+                   .Where(o => (
+                   //o.ReclamoTecnicoID == asignRequest.ReclamoTecnicoID &&
+                   o.CLIENTE == asignRequest.CLIENTE
+                   && o.UserID == asignRequest.UserID
+                   && o.CierraEnAPP == 0
+                   && o.NoMostrarAPP == 0
+                   && o.ESTADOGAOS == "EJB"
+                   ))
+
+                   .OrderBy(o => o.ReclamoTecnicoID).ToListAsync();
+
+
+            var response = new List<AsignacionesOT>();
+            foreach (var control in asignaciones)
+            {
+                var asignResponse = new AsignacionesOT
+                {
+                    Autonumerico = control.Autonumerico,
+                    CMODEM1 = control.CMODEM1,
+                    CodigoCierre = control.CodigoCierre,
+                    DECO1 = control.DECO1,
+                    ESTADO = control.ESTADO,
+                    ESTADO2 = control.ESTADO2,
+                    ESTADO3 = control.ESTADO3,
+                    ESTADOGAOS = control.ESTADOGAOS,
+                    FECHACUMPLIDA = control.FECHACUMPLIDA,
+                    HsCumplida = control.HsCumplida,
+                    HsCumplidaTime = control.HsCumplidaTime,
+                    IDREGISTRO = control.IDREGISTRO,
+                    Observacion = control.Observacion,
+                    PROYECTOMODULO = control.PROYECTOMODULO,
+                    ReclamoTecnicoID = control.ReclamoTecnicoID,
+                    RECUPIDJOBCARD = control.RECUPIDJOBCARD,
+                    IDSuscripcion = control.IDSuscripcion,
+                    MarcaModeloId = control.MarcaModeloId,
+                    MODELO = control.MODELO,
+                    Motivos = control.Motivos,
+                    ZONA = control.ZONA,
+                    TelefAlternativo1 = control.TelefAlternativo1,
+                    TelefAlternativo2 = control.TelefAlternativo2,
+                    TelefAlternativo3 = control.TelefAlternativo3,
+                    TelefAlternativo4 = control.TelefAlternativo4,
+                    BAJASISTEMA = control.BAJASISTEMA,
+                    ArchivoOutGenerado = control.ArchivoOutGenerado,
+                    CAUSANTEC = control.CAUSANTEC,
+                    ENTRECALLE1 = control.ENTRECALLE1,
+                    EmailCliente = control.EmailCliente,
+                    ENTRECALLE2 = control.ENTRECALLE2,
+                    FechaAsignada = control.FechaAsignada,
+                    FECHACAPTURA = control.FECHACAPTURA,
+                    Cancelado = control.Cancelado,
+                    FECHACARGA = control.FECHACARGA,
+                    FECHAENT = control.FECHAENT,
+                    HsAsignada = control.HsAsignada,
+                    IDCABECERACERTIF = control.IDCABECERACERTIF,
+                    IDR = control.IDR,
+                    IdTipoTrabajoRel = control.IdTipoTrabajoRel,
+                    LOCALIDAD = control.LOCALIDAD,
+                    PROVINCIA = control.PROVINCIA,
+                    RUTA = control.RUTA,
+                    SMARTCARD = control.SMARTCARD,
+                    SUBAGENTEMERCADO = control.SUBAGENTEMERCADO,
+                    TARIFA = control.TARIFA,
+                    TECASIG = control.TECASIG,
+                    TerminalAsigna = control.TerminalAsigna,
+                    CLIENTE = control.CLIENTE,
+                    ClienteTipoId = control.ClienteTipoId,
+                    VisitaTecnica = control.VisitaTecnica,
+                    CP = control.CP,
+                    Documento = control.Documento,
+                    DOMICILIO = control.DOMICILIO,
+                    EsCR = control.EsCR,
+                    Enviado = control.Enviado,
+                    Evento1 = control.Evento1,
+                    Evento2 = control.Evento2,
+                    Evento3 = control.Evento3,
+                    Evento4 = control.Evento4,
+                    FechaEnvio = control.FechaEnvio,
+                    FechaEvento1 = control.FechaEvento1,
+                    FechaEvento2 = control.FechaEvento2,
+                    FechaEvento3 = control.FechaEvento3,
+                    FechaEvento4 = control.FechaEvento4,
+                    FechaCumplidaTecnico = control.FechaCumplidaTecnico,
+                    FechaCita = control.FechaCita,
+                    FechaInicio = control.FechaInicio,
+                    GRXX = control.GRXX,
+                    GRYY = control.GRYY,
+                    PDFGenerado = control.PDFGenerado,
+                    HsCaptura = control.HsCaptura,
+                    ItemsID = control.ItemsID,
+                    LinkFoto = control.LinkFoto,
+                    MedioCita = control.MedioCita,
+                    NOMBRE = control.NOMBRE,
+                    Novedades = control.Novedades,
+                    NroSeriesExtras = control.NroSeriesExtras,
+                    ObservacionCaptura = control.ObservacionCaptura,
+                    Partido = control.Partido,
+                    PasaDefinitiva = control.PasaDefinitiva,
+                    Recupero = control.Recupero,
+                    SectorOperativo = control.SectorOperativo,
+                    SUBCON = control.SUBCON,
+                    TELEFONO = control.TELEFONO,
+                    UrlDni = control.UrlDni,
+                    UrlDni2 = control.UrlDni2,
+                    UrlFirma = control.UrlFirma,
+                    UrlFirma2 = control.UrlFirma2,
+                    UserID = control.UserID,
+                    ZTECNICO = control.ZTECNICO,
+                    //ModificadoApp = control.ModificadoApp,
+
+                };
+                response.Add(asignResponse);
+            }
+            return Ok(response);
+        }
+
+        [HttpPost]
         [Route("GetControlesEquivalencia/{ProyectoModulo}")]
         public async Task<IActionResult> GetControlesEquivalencia(string ProyectoModulo)
         {
