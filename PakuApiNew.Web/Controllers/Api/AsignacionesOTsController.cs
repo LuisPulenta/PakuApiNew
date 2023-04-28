@@ -252,15 +252,16 @@ namespace PakuApiNew.Web.Controllers.Api
             var asignaciones = await _dataContext.AsignacionesOTs2
 
                    .Where(o => (
-                   //o.ReclamoTecnicoID == asignRequest.ReclamoTecnicoID &&
+                   o.ReclamoTecnicoID == asignRequest.ReclamoTecnicoID &&
                    o.CLIENTE == asignRequest.CLIENTE
                    && o.UserID == asignRequest.UserID
-                   && o.CierraEnAPP == 0
-                   && o.NoMostrarAPP == 0
+                   //&& o.CierraEnAPP == 0
+                   //&& o.NoMostrarAPP == 0
                    && o.ESTADOGAOS == "EJB"
                    ))
 
-                   .OrderBy(o => o.ReclamoTecnicoID).ToListAsync();
+                   .OrderBy(o => o.ReclamoTecnicoID)
+                   .ToListAsync();
 
 
             var response = new List<AsignacionesOT>();
