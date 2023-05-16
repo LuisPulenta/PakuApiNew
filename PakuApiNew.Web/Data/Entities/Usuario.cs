@@ -17,6 +17,7 @@ namespace PakuApiNew.Web.Data.Entities
         public string Celular { get; set; }
         public int? Orden { get; set; }
         public int? CentroDistribucion { get; set; }
+        public string DNI { get; set; }
         //public ICollection<Ruta> Rutas { get; set; }
     }
 }
