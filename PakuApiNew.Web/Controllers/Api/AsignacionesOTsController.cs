@@ -397,34 +397,70 @@ namespace PakuApiNew.Web.Controllers.Api
         [Route("GetGrafico01Asignados")]
         public async Task<IActionResult> GetGrafico01Asignados(Grafico01Request grafico01Request)
         {
-            if (!ModelState.IsValid)
+            if (grafico01Request.Proyecto != "Otro")
             {
-                return BadRequest();
+                var ordersAux1 = await _dataContext.AsignacionesOTs
+                .Where(o => (o.UserID == grafico01Request.UserID)
+                && (o.PROYECTOMODULO == grafico01Request.Proyecto)
+                && (o.FechaAsignada.Value.Month == grafico01Request.Mes)
+                && (o.FechaAsignada.Value.Year == grafico01Request.Anio)
+                )
+                .OrderBy(o => o.PROYECTOMODULO)
+                .GroupBy(r => new
+                {
+                    r.PROYECTOMODULO,
+                })
+                .Select(g => new
+                {
+                   
+                    Cantidad = g.Count(),
+                }).ToListAsync();
+
+               
+
+                if (ordersAux1 == null)
+                {
+                    return BadRequest("No hay Ordenes de Trabajo para este Usuario.");
+                }
+                return Ok(ordersAux1);
             }
-
-            var orders = await _dataContext.AsignacionesOTs
-           .Where(o => (o.UserID == grafico01Request.UserID)
-           && (o.PROYECTOMODULO == grafico01Request.Proyecto)
-           && (o.FechaAsignada.Value.Month == grafico01Request.Mes)
-           && (o.FechaAsignada.Value.Year == grafico01Request.Anio)
-           )
-           .OrderBy(o => o.PROYECTOMODULO)
-           .GroupBy(r => new
-           {
-               r.PROYECTOMODULO,
-           })
-           .Select(g => new
-           {
-               Cantidad = g.Count(),
-           }).ToListAsync();
-
-
-            if (orders == null)
+            else
             {
-                return BadRequest("No hay Ordenes de Trabajo para este Usuario.");
-            }
+                var ordersAux2 = await _dataContext.AsignacionesOTs
+                 .Where(o => (o.UserID == grafico01Request.UserID)
+                    && (o.PROYECTOMODULO == grafico01Request.Proyecto)
+                    && (o.FechaAsignada.Value.Month == grafico01Request.Mes)
+                    && (o.FechaAsignada.Value.Year == grafico01Request.Anio)
+                    )
+                    .OrderBy(o => o.PROYECTOMODULO)
+                    .GroupBy(r => new
+                    {
+                        r.PROYECTOMODULO,
+                        r.DOMICILIO,
+                    })
+                    .Select(g => new
+                    {
+                        PROYECTOMODULO = g.Key.PROYECTOMODULO,
+                        DOMICILIO = g.Key.DOMICILIO,
+                        Cantidad = g.Count(),
+                    }).ToListAsync();
 
-            return Ok(orders);
+                var orders2 = ordersAux2
+                 .GroupBy(r => new
+                 {
+                     r.PROYECTOMODULO,
+                 })
+                 .Select(g => new
+                 {
+                     Cantidad = g.Count(),
+                 });
+
+                if (orders2 == null)
+                {
+                    return BadRequest("No hay Ordenes de Trabajo para este Usuario.");
+                }
+                return Ok(orders2);
+            }
         }
 
         [HttpPost]
@@ -436,30 +472,74 @@ namespace PakuApiNew.Web.Controllers.Api
                 return BadRequest();
             }
 
-            var orders = await _dataContext.AsignacionesOTs
-           .Where(o => (o.UserID == grafico01Request.UserID)
-           && (o.PROYECTOMODULO == grafico01Request.Proyecto)
-            && (o.ESTADOGAOS == "EJB")
-           && (o.HsCumplidaTime.Value.Month == grafico01Request.Mes)
-           && (o.HsCumplidaTime.Value.Year == grafico01Request.Anio)
-           )
-           .OrderBy(o => o.PROYECTOMODULO)
-           .GroupBy(r => new
-           {
-               r.PROYECTOMODULO,
-           })
-           .Select(g => new
-           {
-               Cantidad = g.Count(),
-           }).ToListAsync();
+            
 
-
-            if (orders == null)
+            if (grafico01Request.Proyecto != "Otro")
             {
-                return BadRequest("No hay Ordenes de Trabajo para este Usuario.");
+                var ordersAux1 = await _dataContext.AsignacionesOTs
+                .Where(o => (o.UserID == grafico01Request.UserID)
+                && (o.PROYECTOMODULO == grafico01Request.Proyecto)
+                && (o.ESTADOGAOS == "EJB")
+                && (o.HsCumplidaTime.Value.Month == grafico01Request.Mes)
+                && (o.HsCumplidaTime.Value.Year == grafico01Request.Anio)
+                )
+                .OrderBy(o => o.PROYECTOMODULO)
+                .GroupBy(r => new
+                {
+                    r.PROYECTOMODULO,
+                })
+                .Select(g => new
+                {
+                    
+                    Cantidad = g.Count(),
+                }).ToListAsync();
+
+               
+                return Ok(ordersAux1);
+            }
+            else
+            {
+                var ordersAux2 = await _dataContext.AsignacionesOTs
+                 .Where(o => (o.UserID == grafico01Request.UserID)
+                    && (o.PROYECTOMODULO == grafico01Request.Proyecto)
+                    && (o.ESTADOGAOS == "EJB")
+                    && (o.HsCumplidaTime.Value.Month == grafico01Request.Mes)
+                    && (o.HsCumplidaTime.Value.Year == grafico01Request.Anio)
+                    )
+                    .OrderBy(o => o.PROYECTOMODULO)
+                    .GroupBy(r => new
+                    {
+                        r.PROYECTOMODULO,
+                        r.DOMICILIO,
+                    })
+                    .Select(g => new
+                    {
+                        PROYECTOMODULO = g.Key.PROYECTOMODULO,
+                        DOMICILIO = g.Key.DOMICILIO,
+                        Cantidad = g.Count(),
+                    }).ToListAsync();
+
+                var orders2 = ordersAux2
+                 .GroupBy(r => new
+                 {
+                     r.PROYECTOMODULO,
+                 })
+                 .Select(g => new
+                 {
+                     Cantidad = g.Count(),
+                 });
+
+                if (orders2 == null)
+                {
+                    return BadRequest("No hay Ordenes de Trabajo para este Usuario.");
+                }
+                return Ok(orders2);
             }
 
-            return Ok(orders);
+
+                   
+
+                
         }
     }
 }
