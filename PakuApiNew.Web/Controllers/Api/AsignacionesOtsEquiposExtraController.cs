@@ -53,7 +53,8 @@ namespace Fleet_App.Web.Controllers.API
             return Ok(response);
         }
 
-        [HttpGet]
+        [HttpPost]
+        [Route("GetEquiposExtra/{cliente}/{userId}/{proyectoModulo}")]
         public async Task<IActionResult> GetEquiposExtra(string cliente, int userId, string proyectoModulo)
         {
             if (!ModelState.IsValid)
