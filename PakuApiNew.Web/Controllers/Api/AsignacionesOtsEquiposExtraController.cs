@@ -50,9 +50,21 @@ namespace Fleet_App.Web.Controllers.API
                 NROSERIEEXTRA = o.NROSERIEEXTRA,
                 ProyectoModulo = o.ProyectoModulo
             }).ToList());
-
-
             return Ok(response);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetEquiposExtra(string cliente, int userId, string proyectoModulo)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            System.Collections.Generic.List<AsignacionesOtsEquiposExtra> equiposExtra = await _dataContext.AsignacionesOtsEquiposExtras
+           .Where(o => (o.NROCLIENTE == cliente && o.IDTECNICO == userId && o.ProyectoModulo == proyectoModulo))
+           .ToListAsync();
+            return Ok(equiposExtra);
         }
     }
 }
