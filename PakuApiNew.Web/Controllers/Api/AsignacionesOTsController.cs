@@ -126,6 +126,7 @@ namespace PakuApiNew.Web.Controllers.Api
                    .Where(o => (
                    //o.ReclamoTecnicoID == asignRequest.ReclamoTecnicoID &&
                    o.CLIENTE == asignRequest.CLIENTE
+                   && o.DOMICILIO == asignRequest.DOMICILIO
                    && o.UserID == asignRequest.UserID
                    && o.CierraEnAPP==0
                    && o.NoMostrarAPP==0
