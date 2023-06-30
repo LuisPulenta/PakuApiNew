@@ -128,11 +128,11 @@ namespace PakuApiNew.Web.Controllers.Api
                    o.CLIENTE == asignRequest.CLIENTE
                    && o.DOMICILIO == asignRequest.DOMICILIO
                    && o.UserID == asignRequest.UserID
-                   && o.CierraEnAPP==0
-                   && o.NoMostrarAPP==0
+                   && o.CierraEnAPP == 0
+                   && o.NoMostrarAPP == 0
                    && o.ESTADOGAOS != "EJB"
                    ))
-                   
+
                    .OrderBy(o => o.ReclamoTecnicoID).ToListAsync();
 
 
@@ -180,7 +180,7 @@ namespace PakuApiNew.Web.Controllers.Api
                     HsAsignada = control.HsAsignada,
                     IDCABECERACERTIF = control.IDCABECERACERTIF,
                     IDR = control.IDR,
-                    IdTipoTrabajoRel= control.IdTipoTrabajoRel,
+                    IdTipoTrabajoRel = control.IdTipoTrabajoRel,
                     LOCALIDAD = control.LOCALIDAD,
                     PROVINCIA = control.PROVINCIA,
                     RUTA = control.RUTA,
@@ -234,7 +234,7 @@ namespace PakuApiNew.Web.Controllers.Api
                     ZTECNICO = control.ZTECNICO,
                     //ModificadoApp = control.ModificadoApp,
 
-             };
+                };
                 response.Add(asignResponse);
             }
             return Ok(response);
@@ -413,11 +413,11 @@ namespace PakuApiNew.Web.Controllers.Api
                 })
                 .Select(g => new
                 {
-                   
+
                     Cantidad = g.Count(),
                 }).ToListAsync();
 
-               
+
 
                 if (ordersAux1 == null)
                 {
@@ -473,7 +473,7 @@ namespace PakuApiNew.Web.Controllers.Api
                 return BadRequest();
             }
 
-            
+
 
             if (grafico01Request.Proyecto != "Otro")
             {
@@ -491,11 +491,11 @@ namespace PakuApiNew.Web.Controllers.Api
                 })
                 .Select(g => new
                 {
-                    
+
                     Cantidad = g.Count(),
                 }).ToListAsync();
 
-               
+
                 return Ok(ordersAux1);
             }
             else
@@ -536,11 +536,42 @@ namespace PakuApiNew.Web.Controllers.Api
                 }
                 return Ok(orders2);
             }
+        }
 
-
-                   
-
-                
+        [HttpPost]
+        [Route("GetConFechaCita/{UserID}")]
+        public async Task<IActionResult> GetConFechaCita(int UserID)
+        {
+            var ordersAux1 = await _dataContext.AsignacionesOTs2
+                .Where(o => (o.UserID == UserID)
+                && (o.CierraEnAPP == 0) && (o.NoMostrarAPP == 0)
+                       && (o.ESTADOGAOS != "EJB")
+                       && (o.FechaCita !=null)
+                       && (o.FechaCita <= DateTime.Now.AddDays(7))
+                )
+                .OrderBy(o => o.PROYECTOMODULO)
+                .GroupBy(r => new
+                {
+                    r.PROYECTOMODULO,
+                    Year = r.FechaCita.Value.Year,
+                    Month = r.FechaCita.Value.Month,
+                    Day = r.FechaCita.Value.Day,
+                    r.LOCALIDAD
+                })
+                .Select(g => new
+                {
+                    PROYECTOMODULO = g.Key.PROYECTOMODULO,
+                    Year=g.Key.Year,
+                    Month = g.Key.Month,
+                    Day = g.Key.Day,
+                    LOCALIDAD = g.Key.LOCALIDAD,
+                    Cantidad = g.Count(),
+                }).ToListAsync();
+            if (ordersAux1 == null)
+            {
+                return BadRequest("No hay Ordenes de Trabajo para este Usuario.");
+            }
+            return Ok(ordersAux1);
         }
     }
 }
