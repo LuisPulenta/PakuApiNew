@@ -466,6 +466,7 @@ namespace PakuApiNew.Web.Controllers.Api
               //r.ObservacionCaptura,
               r.ZONA,
               //r.ModificadoApp
+              r.Marcado,
           })
           .Select(g => new
           {
@@ -515,6 +516,7 @@ namespace PakuApiNew.Web.Controllers.Api
               //ObservacionCaptura=g.Key.ObservacionCaptura,
               ZONA = g.Key.ZONA,
               //modificadoapp = g.Key.ModificadoApp,
+              Marcado=g.Key.Marcado,
 
 
               CantAsign = g.Count(),
@@ -589,6 +591,7 @@ namespace PakuApiNew.Web.Controllers.Api
               //r.ObservacionCaptura,
               r.ZONA,
               //r.ModificadoApp
+              r.Marcado,
           })
           .Select(g => new
           {
@@ -638,6 +641,7 @@ namespace PakuApiNew.Web.Controllers.Api
               //ObservacionCaptura=g.Key.ObservacionCaptura,
               ZONA = g.Key.ZONA,
               //modificadoapp = g.Key.ModificadoApp,
+              Marcado=g.Key.Marcado,
 
 
               CantAsign = g.Count(),
