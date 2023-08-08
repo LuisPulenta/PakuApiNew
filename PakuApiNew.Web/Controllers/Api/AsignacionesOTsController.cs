@@ -232,6 +232,7 @@ namespace PakuApiNew.Web.Controllers.Api
                     UrlFirma2 = control.UrlFirma2,
                     UserID = control.UserID,
                     ZTECNICO = control.ZTECNICO,
+                    Marcado=control.Marcado,
                     //ModificadoApp = control.ModificadoApp,
 
                 };
@@ -361,6 +362,7 @@ namespace PakuApiNew.Web.Controllers.Api
                     UrlFirma2 = control.UrlFirma2,
                     UserID = control.UserID,
                     ZTECNICO = control.ZTECNICO,
+                    Marcado=control.Marcado,
                     //ModificadoApp = control.ModificadoApp,
 
                 };

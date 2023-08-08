@@ -101,6 +101,7 @@ namespace PakuApiNew.Web.Data.Entities
         public string DESCRIPCION { get; set; }
         public int CierraEnAPP { get; set; }
         public int NoMostrarAPP { get; set; }
+        public int Marcado { get; set; }
         //public int ModificadoApp { get; set; }
         public string ClienteCompleto => $"{CLIENTE}-{NOMBRE}";
         public string EntreCalles => $"{ENTRECALLE1} y {ENTRECALLE2}";

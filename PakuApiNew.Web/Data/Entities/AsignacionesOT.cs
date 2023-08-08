@@ -68,6 +68,8 @@ namespace PakuApiNew.Web.Data.Entities
         public DateTime? FechaInicio { get; set; }
         public DateTime? FechaEnvio { get; set; }
         public string MarcaModeloId { get; set; }
+        public DateTime? Fc_inicio_base { get; set; }
+        public DateTime? Fc_fin_base { get; set; }
         public string Enviado { get; set; }
         public int? Cancelado { get; set; }
         public int? Recupero { get; set; }
@@ -100,7 +102,8 @@ namespace PakuApiNew.Web.Data.Entities
         public string TelefAlternativo4 { get; set; }
         public int? elegir { get; set; }
         public int ModificadoAPP { get; set; }
-        
+        public int Marcado { get; set; }
+
         public string ClienteCompleto => $"{CLIENTE}-{NOMBRE}";
         public string EntreCalles => $"{ENTRECALLE1} y {ENTRECALLE2}";
     }
