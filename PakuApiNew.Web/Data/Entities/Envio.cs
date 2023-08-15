@@ -85,5 +85,6 @@ namespace PakuApiNew.Web.Data.Entities
         public int? AvonInformarInclusion { get; set; }
         public decimal? LATITUD2 { get; set; }
         public decimal? LONGITUD2 { get; set; }
+        public string AvonCodAmount { get; set; }
     }
 }
