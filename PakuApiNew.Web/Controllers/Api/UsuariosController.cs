@@ -282,7 +282,6 @@ namespace PakuApiNew.Web.Controllers.Api
            })
         .ToListAsync();
 
-
                 if (orders == null)
                 {
                     return BadRequest("No hay Asignaciones para este Usuario.");
