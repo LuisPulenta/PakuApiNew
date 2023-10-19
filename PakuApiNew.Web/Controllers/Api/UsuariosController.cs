@@ -606,6 +606,7 @@ namespace PakuApiNew.Web.Controllers.Api
               r.ZONA,
               //r.ModificadoApp
               r.Marcado,
+              r.EmailCliente,
           })
           .Select(g => new
           {
@@ -657,6 +658,7 @@ namespace PakuApiNew.Web.Controllers.Api
               ZONA = g.Key.ZONA,
               //modificadoapp = g.Key.ModificadoApp,
               Marcado=g.Key.Marcado,
+              EmailCliente = g.Key.EmailCliente,
 
 
               CantAsign = g.Count(),
