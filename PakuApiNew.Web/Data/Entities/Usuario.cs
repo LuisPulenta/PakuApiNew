@@ -18,6 +18,8 @@ namespace PakuApiNew.Web.Data.Entities
         public int? Orden { get; set; }
         public int? CentroDistribucion { get; set; }
         public string DNI { get; set; }
+        public string Mail { get; set; }
+        public string ClaveEmail { get; set; }
         //public ICollection<Ruta> Rutas { get; set; }
     }
 }
