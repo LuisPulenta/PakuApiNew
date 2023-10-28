@@ -103,6 +103,10 @@ namespace PakuApiNew.Web.Data.Entities
         public int? elegir { get; set; }
         public int ModificadoAPP { get; set; }
         public int Marcado { get; set; }
+        public string DniRecibe { get; set; }
+        public string NombreRecibe { get; set; }
+        public string NroSerieEntrega { get; set; }
+        public string NroSerieEntrega1 { get; set; }
 
         public string ClienteCompleto => $"{CLIENTE}-{NOMBRE}";
         public string EntreCalles => $"{ENTRECALLE1} y {ENTRECALLE2}";

@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using PakuApiNew.Helpers;
 using PakuApiNew.Web.Data;
 using PakuApiNew.Web.Helpers;
+using UbicApi.Web.Helpers;
 
 namespace PakuApiNew.Web
 {
@@ -38,6 +39,7 @@ namespace PakuApiNew.Web
 
             services.AddScoped<IImageHelper, ImageHelper>();
             services.AddScoped<IFilesHelper, FilesHelper>();
+            services.AddScoped<IMailHelper, MailHelper>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using PakuApiNew.Helpers;
 using PakuApiNew.Web.Data;
 using PakuApiNew.Web.Data.Entities;
 using PakuApiNew.Web.Models;
@@ -15,10 +16,12 @@ namespace PakuApiNew.Web.Controllers.Api
     public class UsuariosController : ControllerBase
     {
         private readonly DataContext _dataContext;
+        private readonly IMailHelper _mailHelper;
 
-        public UsuariosController(DataContext dataContext)
+        public UsuariosController(DataContext dataContext, IMailHelper mailHelper)
         {
             _dataContext = dataContext;
+            _mailHelper = mailHelper;
         }
 
         [HttpGet]
@@ -163,6 +166,7 @@ namespace PakuApiNew.Web.Controllers.Api
                 return BadRequest();
             }
 
+            //----------Cable-------------------------------
             if (ProyectoModulo=="Cable")
             {
                 var orders = await _dataContext.AsignacionesOTs2
@@ -289,6 +293,7 @@ namespace PakuApiNew.Web.Controllers.Api
 
                 return Ok(orders);
             }
+            //----------TLC-------------------------------
             if (ProyectoModulo == "TLC")
             {
                 var orders = await _dataContext.AsignacionesOTs2
@@ -416,6 +421,8 @@ namespace PakuApiNew.Web.Controllers.Api
 
                 return Ok(orders);
             }
+
+            //----------Prisma o SuperC-------------------------------
             if (ProyectoModulo == "Prisma" || ProyectoModulo == "SuperC")
             {
                 var orders = await _dataContext.AsignacionesOTs2
@@ -545,6 +552,7 @@ namespace PakuApiNew.Web.Controllers.Api
                 return Ok(orders);
             }
 
+            //----------Todo lo demás-------------------------------
             else
             {
                 var orders = await _dataContext.AsignacionesOTs2
@@ -1022,6 +1030,16 @@ namespace PakuApiNew.Web.Controllers.Api
                 }
 
                 return Ok(orders);
+        }
+
+        //----------------------------------------------------------------------------------
+
+        [HttpPost]
+        [Route("EnviarMail")]
+        public void EnviarMail(EmailRequest request)
+       
+        {
+           Response respuesta = _mailHelper.SendMail(request.From,request.Smtp,request.Port,request.Password,request.To, request.Subject,request.Body);
         }
     }
 }

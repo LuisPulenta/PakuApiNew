@@ -234,7 +234,10 @@ namespace PakuApiNew.Web.Controllers.Api
                     ZTECNICO = control.ZTECNICO,
                     Marcado=control.Marcado,
                     //ModificadoApp = control.ModificadoApp,
-
+                    DniRecibe=control.DniRecibe,
+                    NombreRecibe=control.NombreRecibe,
+                    NroSerieEntrega=control.NroSerieEntrega,
+                    NroSerieEntrega1 = control.NroSerieEntrega1,
                 };
                 response.Add(asignResponse);
             }
@@ -364,7 +367,10 @@ namespace PakuApiNew.Web.Controllers.Api
                     ZTECNICO = control.ZTECNICO,
                     Marcado=control.Marcado,
                     //ModificadoApp = control.ModificadoApp,
-
+                    DniRecibe = control.DniRecibe,
+                    NombreRecibe = control.NombreRecibe,
+                    NroSerieEntrega = control.NroSerieEntrega,
+                    NroSerieEntrega1 = control.NroSerieEntrega1,
                 };
                 response.Add(asignResponse);
             }
