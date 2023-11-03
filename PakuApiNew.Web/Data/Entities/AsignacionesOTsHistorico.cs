@@ -18,7 +18,7 @@ namespace PakuApiNew.Web.Data.Entities
         public string RESPUESTA { get; set; }
         public int UserID { get; set; }
         public string Terminal { get; set; }
-        public int IDUserGaos { get; set; }
+        public int? IDUserGaos { get; set; }
         public int InformadaCliente { get; set; }
      }
 }
