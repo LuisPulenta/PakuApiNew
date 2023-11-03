@@ -10,5 +10,6 @@ namespace PakuApiNew.Web.Data.Entities
         public string DESCRIPCION { get; set; }
         public int CierraEnAPP { get; set; }
         public int NoMostrarAPP { get; set; }
+        public string EquivalenciaWS { get; set; }
     }
 }
