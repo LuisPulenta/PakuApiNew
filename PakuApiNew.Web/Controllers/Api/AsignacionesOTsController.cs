@@ -581,5 +581,29 @@ namespace PakuApiNew.Web.Controllers.Api
             }
             return Ok(ordersAux1);
         }
+
+        [HttpPost]
+        [Route("PostAsigHistorico")]
+        public async Task<IActionResult> PostAsigHistorico([FromBody] AsignacionesOTsHistorico request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _dataContext.AsignacionesOTsHistoricoWS.Add(request);
+            await _dataContext.SaveChangesAsync();
+
+            return Ok(request);
+        }
+
+        [HttpGet]
+        [Route("GetNroRegistroMax")]
+        public async Task<IActionResult> GetNroRegistroMax()
+        {
+            int query = _dataContext.AsignacionesOTsHistoricoWS.Max(c => c.IDHISTO);
+
+            return Ok(query);
+        }
     }
 }
