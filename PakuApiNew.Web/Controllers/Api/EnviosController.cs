@@ -66,7 +66,10 @@ namespace PakuApiNew.Web.Controllers.Api
             envio.UrlDNI = imageUrl1;
             envio.LATITUD2 = request.LATITUD2;
             envio.LONGITUD2 = request.LONGITUD2;
-            envio.EnviarMailSegunEstado = request.EnviarMailSegunEstado;
+            if(request.EnviarMailSegunEstado != null)
+            {
+                envio.EnviarMailSegunEstado = request.EnviarMailSegunEstado;
+            }           
 
 
             try
