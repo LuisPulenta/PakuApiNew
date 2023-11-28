@@ -26,6 +26,7 @@ namespace PakuApiNew.Web.Data
         public DbSet<SubContratistasUsrVehiculo> SubContratistasUsrVehiculos { get; set; }
         public DbSet<Vista_AcumuladosEquiposSinDevolver> Vista_AcumuladosEquiposSinDevolver { get; set; }
         public DbSet<AsignacionesOtsTurno> AsignacionesOtsTurnos { get; set; }
-        public DbSet<AsignacionesOTsHistorico   > AsignacionesOTsHistoricoWS { get; set; }        
+        public DbSet<AsignacionesOTsHistorico   > AsignacionesOTsHistoricoWS { get; set; }
+        public DbSet<AsignacionesOTw> AsignacionesOTws { get; set; }        
     }
 }
