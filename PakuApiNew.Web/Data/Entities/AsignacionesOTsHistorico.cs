@@ -20,5 +20,7 @@ namespace PakuApiNew.Web.Data.Entities
         public string Terminal { get; set; }
         public int? IDUserGaos { get; set; }
         public int InformadaCliente { get; set; }
-     }
+        public string NroRemito { get; set; }
+        public string NroPedidoCabecera { get; set; }
+    }
 }
