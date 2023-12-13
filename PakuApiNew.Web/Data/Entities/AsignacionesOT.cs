@@ -107,7 +107,8 @@ namespace PakuApiNew.Web.Data.Entities
         public string NombreRecibe { get; set; }
         public string NroSerieEntrega { get; set; }
         public string NroSerieEntrega1 { get; set; }
-
+        public string CODIGO_PEDIDO_CABECERA { get; set; }
+                
         public string ClienteCompleto => $"{CLIENTE}-{NOMBRE}";
         public string EntreCalles => $"{ENTRECALLE1} y {ENTRECALLE2}";
     }

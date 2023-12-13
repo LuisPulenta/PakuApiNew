@@ -111,6 +111,7 @@ namespace PakuApiNew.Web.Models
         public int ModificadoAPP { get; set; }
 
         //public int? NoMostrarAPP { get; set; }
+        public string CODIGO_PEDIDO_CABECERA { get; set; }
 
         public string ClienteCompleto => $"{CLIENTE}-{NOMBRE}";
         public string EntreCalles => $"{ENTRECALLE1} y {ENTRECALLE2}";

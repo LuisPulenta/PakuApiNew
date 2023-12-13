@@ -104,6 +104,9 @@ namespace PakuApiNew.Web.Controllers.Api
             oldasignacionesOT.SMARTCARD = asignacionesOT.SMARTCARD;
             oldasignacionesOT.elegir = asignacionesOT.elegir;
             oldasignacionesOT.ModificadoAPP = 1;
+            oldasignacionesOT.CODIGO_PEDIDO_CABECERA = asignacionesOT.CODIGO_PEDIDO_CABECERA;
+            oldasignacionesOT.RUTA = asignacionesOT.RUTA;
+                
 
 
             _dataContext.AsignacionesOTs.Update(oldasignacionesOT);
@@ -238,6 +241,8 @@ namespace PakuApiNew.Web.Controllers.Api
                     NombreRecibe=control.NombreRecibe,
                     NroSerieEntrega=control.NroSerieEntrega,
                     NroSerieEntrega1 = control.NroSerieEntrega1,
+                    CODIGO_PEDIDO_CABECERA=control.CODIGO_PEDIDO_CABECERA
+
                 };
                 response.Add(asignResponse);
             }
