@@ -69,7 +69,7 @@ namespace GenericApp.Web.Controllers.API
                 return BadRequest();
             }
 
-            var oldUsuario = await _dataContext.Usuarios.FirstOrDefaultAsync(x => x.Contrasena == request.Login);
+            var oldUsuario = await _dataContext.Usuarios.FirstOrDefaultAsync(x => x.Login == request.Login);
 
             if (oldUsuario == null)
             {
