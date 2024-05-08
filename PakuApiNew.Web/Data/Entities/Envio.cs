@@ -71,8 +71,8 @@ namespace PakuApiNew.Web.Data.Entities
         public string UrlDNI { get; set; }
         [Display(Name = "DNI")]
         public string UrlDNIFullPath => string.IsNullOrEmpty(UrlDNI)
-          ? $"http://181.174.199.118:88/PakuApiNew/images/DNI/noimage.png"
-          : $"http://181.174.199.118:88/PakuApiNew{UrlDNI.Substring(1)}";
+          ? $"http://190.221.174.67:88/PakuApiNew/images/DNI/noimage.png"
+          : $"http://190.221.174.67:88/PakuApiNew{UrlDNI.Substring(1)}";
         public int? UltimoIdMotivo { get; set; }
         public string UltimaNotaFletero { get; set; }
         public int? IdComprobanteDevolucion { get; set; }

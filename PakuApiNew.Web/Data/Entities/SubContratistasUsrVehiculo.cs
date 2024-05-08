@@ -31,35 +31,35 @@ namespace PakuApiNew.Web.Data.Entities
         public string LinkAntecedentes { get; set; }
 
         public string DniFrenteFullPath => DNIFrente == string.Empty
-           ? $"http://181.174.199.118:88/PakuApiNew/images/DNI/noimage.png"
-            : $"http://181.174.199.118:88/PakuApiNew{DNIFrente.Substring(1)}";
+           ? $"http://190.221.174.67:88/PakuApiNew/images/DNI/noimage.png"
+            : $"http://190.221.174.67:88/PakuApiNew{DNIFrente.Substring(1)}";
 
         public string DniDorsoFullPath => DNIDorso == string.Empty
-           ? $"http://181.174.199.118:88/PakuApiNew/images/DNI/noimage.png"
-            : $"http://181.174.199.118:88/PakuApiNew{DNIDorso.Substring(1)}";
+           ? $"http://190.221.174.67:88/PakuApiNew/images/DNI/noimage.png"
+            : $"http://190.221.174.67:88/PakuApiNew{DNIDorso.Substring(1)}";
 
         public string CarnetConducirFullPath => CarnetConducir == string.Empty
-           ? $"http://181.174.199.118:88/PakuApiNew/images/DNI/noimage.png"
-            : $"http://181.174.199.118:88/PakuApiNew{CarnetConducir.Substring(1)}";
+           ? $"http://190.221.174.67:88/PakuApiNew/images/DNI/noimage.png"
+            : $"http://190.221.174.67:88/PakuApiNew{CarnetConducir.Substring(1)}";
 
         public string LinkVtvFullPath => LinkVtv == string.Empty
-          ? $"http://181.174.199.118:88/PakuApiNew/images/DNI/noimage.png"
-           : $"http://181.174.199.118:88/PakuApiNew{LinkVtv.Substring(1)}";
+          ? $"http://190.221.174.67:88/PakuApiNew/images/DNI/noimage.png"
+           : $"http://190.221.174.67:88/PakuApiNew{LinkVtv.Substring(1)}";
 
         public string LinkObleaGasFullPath => LinkObleaGas == string.Empty
-          ? $"http://181.174.199.118:88/PakuApiNew/images/DNI/noimage.png"
-           : $"http://181.174.199.118:88/PakuApiNew{LinkObleaGas.Substring(1)}";
+          ? $"http://190.221.174.67:88/PakuApiNew/images/DNI/noimage.png"
+           : $"http://190.221.174.67:88/PakuApiNew{LinkObleaGas.Substring(1)}";
 
         public string LinkPolizaSeguroFullPath => LinkPolizaSeguro == string.Empty
-         ? $"http://181.174.199.118:88/PakuApiNew/images/DNI/noimage.png"
-          : $"http://181.174.199.118:88/PakuApiNew{LinkPolizaSeguro.Substring(1)}";
+         ? $"http://190.221.174.67:88/PakuApiNew/images/DNI/noimage.png"
+          : $"http://190.221.174.67:88/PakuApiNew{LinkPolizaSeguro.Substring(1)}";
 
         public string LinkCedulaFullPath => LinkCedula == string.Empty
-         ? $"http://181.174.199.118:88/PakuApiNew/images/DNI/noimage.png"
-          : $"http://181.174.199.118:88/PakuApiNew{LinkCedula.Substring(1)}";
+         ? $"http://190.221.174.67:88/PakuApiNew/images/DNI/noimage.png"
+          : $"http://190.221.174.67:88/PakuApiNew{LinkCedula.Substring(1)}";
 
         public string LinkAntecedentesFullPath => LinkAntecedentes == string.Empty
-         ? $"http://181.174.199.118:88/PakuApiNew/images/DNI/noimage.png"
-          : $"http://181.174.199.118:88/PakuApiNew{LinkAntecedentes.Substring(1)}";
+         ? $"http://190.221.174.67:88/PakuApiNew/images/DNI/noimage.png"
+          : $"http://190.221.174.67:88/PakuApiNew{LinkAntecedentes.Substring(1)}";
     }
 }
