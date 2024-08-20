@@ -13,6 +13,8 @@ namespace PakuApiNew.Web.Data.Entities
         public DateTime FechaAlta { get; set; }
         public string Nombre { get; set; }
         public int Estado { get; set; }
+        public int HabilitaCatastro { get; set; }
+        
         public ICollection<Parada> Paradas { get; set; }
         public ICollection<Envio> Envios { get; set; }
     }
