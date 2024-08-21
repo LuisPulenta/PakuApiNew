@@ -29,5 +29,6 @@ namespace PakuApiNew.Web.Data
         public DbSet<AsignacionesOTsHistorico   > AsignacionesOTsHistoricoWS { get; set; }
         public DbSet<AsignacionesOTw> AsignacionesOTws { get; set; }
         public DbSet<Usuario2> Usuarios { get; set; }
+        public DbSet<DestinosGeoCoding> p_DestinosGeoCoding { get; set; }
     }
 }
