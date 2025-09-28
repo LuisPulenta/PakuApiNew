@@ -12,14 +12,11 @@ namespace GenericApp.Web.Controllers.API
     public class AccountController : ControllerBase
     {
         private readonly DataContext _dataContext;
-        
 
         public AccountController(DataContext dataContext)
         {
             _dataContext = dataContext;
         }
-
-
 
         [HttpPost]
         [Route("GetUserByLogin")]
@@ -29,7 +26,6 @@ namespace GenericApp.Web.Controllers.API
             {
                 return BadRequest();
             }
-
 
             var user = await _dataContext.Usuarios.FirstOrDefaultAsync(o => o.Login.ToLower() == userRequest.Email.ToLower());
 
@@ -48,12 +44,11 @@ namespace GenericApp.Web.Controllers.API
                 Apellido = user.Apellido,
                 Estado = user.Estado,
                 FechaCaduca = user.FechaCaduca,
-                IntentosInvDiario=user.IntentosInvDiario,
-                OpeAutorizo=user.OpeAutorizo,
+                IntentosInvDiario = user.IntentosInvDiario,
+                OpeAutorizo = user.OpeAutorizo,
             };
             return Ok(response);
         }
-
 
         [HttpPut("{login}")]
         [Route("ReactivaUsuario")]
@@ -84,6 +79,6 @@ namespace GenericApp.Web.Controllers.API
             _dataContext.Usuarios.Update(oldUsuario);
             await _dataContext.SaveChangesAsync();
             return Ok();
-        }        
+        }
     }
 }
