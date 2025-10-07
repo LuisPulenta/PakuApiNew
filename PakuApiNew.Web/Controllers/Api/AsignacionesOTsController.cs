@@ -45,7 +45,6 @@ namespace PakuApiNew.Web.Controllers.Api
                 return BadRequest("El registro no existe.");
             }
 
-
             var imageUrlDNI = oldasignacionesOT.UrlDni;
             if (asignacionesOT.ImageArrayDni != null && asignacionesOT.ImageArrayDni.Length > 0)
             {
@@ -106,8 +105,6 @@ namespace PakuApiNew.Web.Controllers.Api
             oldasignacionesOT.ModificadoAPP = 1;
             oldasignacionesOT.CODIGO_PEDIDO_CABECERA = asignacionesOT.CODIGO_PEDIDO_CABECERA;
             oldasignacionesOT.RUTA = asignacionesOT.RUTA;
-                
-
 
             _dataContext.AsignacionesOTs.Update(oldasignacionesOT);
             await _dataContext.SaveChangesAsync();
@@ -123,7 +120,6 @@ namespace PakuApiNew.Web.Controllers.Api
                 return BadRequest();
             }
 
-
             var asignaciones = await _dataContext.AsignacionesOTs2
 
                    .Where(o => (
@@ -137,7 +133,6 @@ namespace PakuApiNew.Web.Controllers.Api
                    ))
 
                    .OrderBy(o => o.ReclamoTecnicoID).ToListAsync();
-
 
             var response = new List<AsignacionesOT>();
             foreach (var control in asignaciones)
@@ -235,14 +230,13 @@ namespace PakuApiNew.Web.Controllers.Api
                     UrlFirma2 = control.UrlFirma2,
                     UserID = control.UserID,
                     ZTECNICO = control.ZTECNICO,
-                    Marcado=control.Marcado,
+                    Marcado = control.Marcado,
                     //ModificadoApp = control.ModificadoApp,
-                    DniRecibe=control.DniRecibe,
-                    NombreRecibe=control.NombreRecibe,
-                    NroSerieEntrega=control.NroSerieEntrega,
+                    DniRecibe = control.DniRecibe,
+                    NombreRecibe = control.NombreRecibe,
+                    NroSerieEntrega = control.NroSerieEntrega,
                     NroSerieEntrega1 = control.NroSerieEntrega1,
-                    CODIGO_PEDIDO_CABECERA=control.CODIGO_PEDIDO_CABECERA
-
+                    CODIGO_PEDIDO_CABECERA = control.CODIGO_PEDIDO_CABECERA
                 };
                 response.Add(asignResponse);
             }
@@ -258,7 +252,6 @@ namespace PakuApiNew.Web.Controllers.Api
                 return BadRequest();
             }
 
-
             var asignaciones = await _dataContext.AsignacionesOTs2
 
                    .Where(o => (
@@ -272,7 +265,6 @@ namespace PakuApiNew.Web.Controllers.Api
 
                    .OrderBy(o => o.ReclamoTecnicoID)
                    .ToListAsync();
-
 
             var response = new List<AsignacionesOT>();
             foreach (var control in asignaciones)
@@ -370,7 +362,7 @@ namespace PakuApiNew.Web.Controllers.Api
                     UrlFirma2 = control.UrlFirma2,
                     UserID = control.UserID,
                     ZTECNICO = control.ZTECNICO,
-                    Marcado=control.Marcado,
+                    Marcado = control.Marcado,
                     //ModificadoApp = control.ModificadoApp,
                     DniRecibe = control.DniRecibe,
                     NombreRecibe = control.NombreRecibe,
@@ -393,11 +385,10 @@ namespace PakuApiNew.Web.Controllers.Api
 
             var controles = await _dataContext.ControlesEquivalencias
 
-           .Where(o => (o.ProyectoModulo == ProyectoModulo) && (o.DECO1==o.CODIGOEQUIVALENCIA)
+           .Where(o => (o.ProyectoModulo == ProyectoModulo)
                         )
            .OrderBy(o => o.DESCRIPCION)
         .ToListAsync();
-
 
             if (controles == null)
             {
@@ -426,11 +417,8 @@ namespace PakuApiNew.Web.Controllers.Api
                 })
                 .Select(g => new
                 {
-
                     Cantidad = g.Count(),
                 }).ToListAsync();
-
-
 
                 if (ordersAux1 == null)
                 {
@@ -486,8 +474,6 @@ namespace PakuApiNew.Web.Controllers.Api
                 return BadRequest();
             }
 
-
-
             if (grafico01Request.Proyecto != "Otro")
             {
                 var ordersAux1 = await _dataContext.AsignacionesOTs
@@ -504,10 +490,8 @@ namespace PakuApiNew.Web.Controllers.Api
                 })
                 .Select(g => new
                 {
-
                     Cantidad = g.Count(),
                 }).ToListAsync();
-
 
                 return Ok(ordersAux1);
             }
@@ -559,7 +543,7 @@ namespace PakuApiNew.Web.Controllers.Api
                 .Where(o => (o.UserID == UserID)
                 && (o.CierraEnAPP == 0) && (o.NoMostrarAPP == 0)
                        && (o.ESTADOGAOS != "EJB")
-                       && (o.FechaCita !=null)
+                       && (o.FechaCita != null)
                        && (o.FechaCita <= DateTime.Now.AddDays(7))
                 )
                 .OrderBy(o => o.PROYECTOMODULO)
@@ -574,7 +558,7 @@ namespace PakuApiNew.Web.Controllers.Api
                 .Select(g => new
                 {
                     PROYECTOMODULO = g.Key.PROYECTOMODULO,
-                    Year=g.Key.Year,
+                    Year = g.Key.Year,
                     Month = g.Key.Month,
                     Day = g.Key.Day,
                     LOCALIDAD = g.Key.LOCALIDAD,
