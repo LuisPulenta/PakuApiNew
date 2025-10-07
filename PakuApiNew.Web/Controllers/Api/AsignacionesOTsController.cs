@@ -393,7 +393,7 @@ namespace PakuApiNew.Web.Controllers.Api
 
             var controles = await _dataContext.ControlesEquivalencias
 
-           .Where(o => (o.ProyectoModulo == ProyectoModulo)
+           .Where(o => (o.ProyectoModulo == ProyectoModulo) && (o.DECO1==o.CODIGOEQUIVALENCIA)
                         )
            .OrderBy(o => o.DESCRIPCION)
         .ToListAsync();
