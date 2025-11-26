@@ -4,8 +4,9 @@ namespace PakuApiNew.Web.Data.Entities
 {
     public class FuncionesApp
     {
-        public string PROYECTOMODULO { get; set; }
         [Key]
+        public string PROYECTOMODULO { get; set; }
+
         public int HabilitaFoto { get; set; }
         public int HabilitaDNI { get; set; }
         public int HabilitaEstadisticas { get; set; }
@@ -16,6 +17,7 @@ namespace PakuApiNew.Web.Data.Entities
         public int HabilitaCambioModelo { get; set; }
         public string Token { get; set; }
         public int HabilitaVerPdf { get; set; }
-
+        public int HabilitaModulo { get; set; }
+        public int HabilitaRecuperoParcial { get; set; }
     }
 }

@@ -1,10 +1,12 @@
-﻿    using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Org.BouncyCastle.Asn1.Ocsp;
 using PakuApiNew.Helpers;
 using PakuApiNew.Web.Data;
 using PakuApiNew.Web.Data.Entities;
 using PakuApiNew.Web.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,7 +14,6 @@ namespace PakuApiNew.Web.Controllers.Api
 {
     [Route("api/[controller]")]
     [ApiController]
-
     public class UsuariosController : ControllerBase
     {
         private readonly DataContext _dataContext;
@@ -24,6 +25,7 @@ namespace PakuApiNew.Web.Controllers.Api
             _mailHelper = mailHelper;
         }
 
+        //------------------------------------------------------------------------------------------
         [HttpGet]
         public async Task<IActionResult> GetUsuarios()
         {
@@ -38,6 +40,7 @@ namespace PakuApiNew.Web.Controllers.Api
             return Ok(usuarios);
         }
 
+        //------------------------------------------------------------------------------------------
         [HttpPost]
         [Route("GetRutas/{IDUser}")]
         public async Task<IActionResult> GetRutas(int IDUser)
@@ -55,7 +58,6 @@ namespace PakuApiNew.Web.Controllers.Api
            .OrderBy(o => o.IDRuta)
            .ToListAsync();
 
-
             if (rutas == null)
             {
                 return BadRequest("No hay Rutas.");
@@ -63,6 +65,7 @@ namespace PakuApiNew.Web.Controllers.Api
             return Ok(rutas);
         }
 
+        //------------------------------------------------------------------------------------------
         [HttpPost]
         [Route("GetTiposAsignaciones/{UserID}")]
         public async Task<IActionResult> GetTiposAsignaciones(int UserID)
@@ -73,27 +76,22 @@ namespace PakuApiNew.Web.Controllers.Api
             }
 
             var tipos = await _dataContext.AsignacionesOTs2
+    .Where(o => o.UserID == UserID && o.ESTADOGAOS != "EJB" && o.CierraEnAPP == 0 && o.NoMostrarAPP == 0)
+    .GroupBy(o => o.PROYECTOMODULO)
+    .Select(g => new { proyectomodulo = g.Key })
+    .ToListAsync();
 
-           .Where(o => (o.UserID == UserID) && (o.ESTADOGAOS != "EJB") && (o.CierraEnAPP == 0) && (o.NoMostrarAPP == 0))
-           .OrderBy(o => o.PROYECTOMODULO)
-           .GroupBy(r => new
-           {
-               r.PROYECTOMODULO,
-           })
-           .Select(g => new
-           {
-               PROYECTOMODULO = g.Key.PROYECTOMODULO,
-           }).ToListAsync();
+            var funciones = await _dataContext.FuncionesApps
+                .ToListAsync();
 
+            var result = tipos
+                .Where(tipo => funciones.Any(f => f.PROYECTOMODULO == tipo.proyectomodulo && f.HabilitaModulo != 0))
+                .ToList();
 
-            if (tipos == null)
-            {
-                return BadRequest("No hay Asignaciones para este Usuario.");
-            }
-
-            return Ok(tipos);
+            return Ok(result);
         }
 
+        //------------------------------------------------------------------------------------------
         [HttpPost]
         [Route("GetZonas/{UserID}/{ProyectoModulo}")]
         public async Task<IActionResult> GetZonas(int UserID, string ProyectoModulo)
@@ -116,7 +114,6 @@ namespace PakuApiNew.Web.Controllers.Api
                ZONA = g.Key.ZONA,
            }).ToListAsync();
 
-
             if (zonas == null)
             {
                 return BadRequest("No hay Zonas para este ProyectoModulo.");
@@ -125,7 +122,7 @@ namespace PakuApiNew.Web.Controllers.Api
             return Ok(zonas);
         }
 
-
+        //------------------------------------------------------------------------------------------
         [HttpPost]
         [Route("GetCarteras/{UserID}/{ProyectoModulo}")]
         public async Task<IActionResult> GetCarteras(int UserID, string ProyectoModulo)
@@ -148,7 +145,6 @@ namespace PakuApiNew.Web.Controllers.Api
                Motivos = g.Key.Motivos,
            }).ToListAsync();
 
-
             if (zonas == null)
             {
                 return BadRequest("No hay Carteras para este ProyectoModulo.");
@@ -157,6 +153,7 @@ namespace PakuApiNew.Web.Controllers.Api
             return Ok(zonas);
         }
 
+        //------------------------------------------------------------------------------------------
         [HttpPost]
         [Route("GetAsignaciones/{UserID}/{ProyectoModulo}")]
         public async Task<IActionResult> GetAsignaciones(int UserID, string ProyectoModulo)
@@ -167,7 +164,7 @@ namespace PakuApiNew.Web.Controllers.Api
             }
 
             //----------Cable-------------------------------
-            if (ProyectoModulo=="Cable")
+            if (ProyectoModulo == "Cable")
             {
                 var orders = await _dataContext.AsignacionesOTs2
 
@@ -413,7 +410,6 @@ namespace PakuApiNew.Web.Controllers.Api
            })
         .ToListAsync();
 
-
                 if (orders == null)
                 {
                     return BadRequest("No hay Asignaciones para este Usuario.");
@@ -535,14 +531,12 @@ namespace PakuApiNew.Web.Controllers.Api
               //ObservacionCaptura=g.Key.ObservacionCaptura,
               ZONA = g.Key.ZONA,
               //modificadoapp = g.Key.ModificadoApp,
-              Marcado=g.Key.Marcado,
+              Marcado = g.Key.Marcado,
               EmailCliente = g.Key.EmailCliente,
-
 
               CantAsign = g.Count(),
           })
        .ToListAsync();
-
 
                 if (orders == null)
                 {
@@ -665,14 +659,12 @@ namespace PakuApiNew.Web.Controllers.Api
               //ObservacionCaptura=g.Key.ObservacionCaptura,
               ZONA = g.Key.ZONA,
               //modificadoapp = g.Key.ModificadoApp,
-              Marcado=g.Key.Marcado,
+              Marcado = g.Key.Marcado,
               EmailCliente = g.Key.EmailCliente,
-
 
               CantAsign = g.Count(),
           })
        .ToListAsync();
-
 
                 if (orders == null)
                 {
@@ -680,12 +672,10 @@ namespace PakuApiNew.Web.Controllers.Api
                 }
 
                 return Ok(orders);
-
             }
-
-            
         }
 
+        //------------------------------------------------------------------------------------------
         [HttpPost]
         [Route("GetAsignacionesTodas/{UserID}")]
         public async Task<IActionResult> GetAsignacionesTodas(int UserID)
@@ -800,11 +790,9 @@ namespace PakuApiNew.Web.Controllers.Api
                ZONA = g.Key.ZONA,
                //ModificadoApp = g.Key.ModificadoApp,
 
-
                CantAsign = g.Count(),
            })
         .ToListAsync();
-
 
             if (orders == null)
             {
@@ -814,6 +802,7 @@ namespace PakuApiNew.Web.Controllers.Api
             return Ok(orders);
         }
 
+        //------------------------------------------------------------------------------------------
         [HttpPost]
         [Route("GetCodigosCierre/{ProyectoModulo}")]
         public async Task<IActionResult> GetCodigosCierre(string ProyectoModulo)
@@ -829,7 +818,6 @@ namespace PakuApiNew.Web.Controllers.Api
            .OrderBy(o => o.CodigoCierre)
            .ToListAsync();
 
-
             if (codigoscierre == null)
             {
                 return BadRequest("No hay Códigos de Cierre para este ProyectoModulo.");
@@ -838,6 +826,7 @@ namespace PakuApiNew.Web.Controllers.Api
             return Ok(codigoscierre);
         }
 
+        //------------------------------------------------------------------------------------------
         [HttpPost]
         [Route("GetFuncionesApps/{ProyectoModulo}")]
         public async Task<IActionResult> GetFuncionesApps(string ProyectoModulo)
@@ -852,7 +841,6 @@ namespace PakuApiNew.Web.Controllers.Api
            .Where(o => (o.PROYECTOMODULO == ProyectoModulo))
            .ToListAsync();
 
-
             if (funcionesApp == null)
             {
                 return BadRequest("No hay FuncionesApps para este ProyectoModulo.");
@@ -861,6 +849,7 @@ namespace PakuApiNew.Web.Controllers.Api
             return Ok(funcionesApp);
         }
 
+        //------------------------------------------------------------------------------------------
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUsuario([FromRoute] int id, [FromBody] ChangePasswordRequest request)
         {
@@ -887,6 +876,7 @@ namespace PakuApiNew.Web.Controllers.Api
             return Ok();
         }
 
+        //------------------------------------------------------------------------------------------
         [HttpPost]
         [Route("getAsignacionesEjb/{UserID}")]
         public async Task<IActionResult> getAsignacionesEjb(int UserID)
@@ -899,7 +889,7 @@ namespace PakuApiNew.Web.Controllers.Api
             String _year = DateTime.Today.Year.ToString();
             String _month = DateTime.Today.Month.ToString();
             String _day = DateTime.Today.Day.ToString();
-            if (_month.Length==1)
+            if (_month.Length == 1)
             {
                 _month = "0" + _month;
             }
@@ -909,11 +899,10 @@ namespace PakuApiNew.Web.Controllers.Api
             }
             String hoy = _year + "-" + _month + "-" + _day;
 
-
             var orders = await _dataContext.AsignacionesOTs2
 
            .Where(o => (o.UserID == UserID)
-                        && (o.FECHACUMPLIDA.ToString().Substring(0,10) == hoy)
+                        && (o.FECHACUMPLIDA.ToString().Substring(0, 10) == hoy)
                         && (o.ESTADOGAOS == "EJB")
                         )
            .OrderBy(o => o.RECUPIDJOBCARD)
@@ -970,7 +959,7 @@ namespace PakuApiNew.Web.Controllers.Api
            .Select(g => new
            {
                CLIENTE = g.Key.CLIENTE,
-               FECHACUMPLIDA=g.Key.FECHACUMPLIDA,
+               FECHACUMPLIDA = g.Key.FECHACUMPLIDA,
                HsCumplidaTime = g.Key.HsCumplidaTime,
                Documento = g.Key.Documento,
                NOMBRE = g.Key.NOMBRE,
@@ -1017,29 +1006,26 @@ namespace PakuApiNew.Web.Controllers.Api
                ZONA = g.Key.ZONA,
                //ModificadoApp = g.Key.ModificadoApp,
 
-
                CantAsign = g.Count(),
            })
            .OrderByDescending(o => (o.FECHACUMPLIDA))
         .ToListAsync();
 
+            if (orders == null)
+            {
+                return BadRequest("No hay Asignaciones para este Usuario.");
+            }
 
-                if (orders == null)
-                {
-                    return BadRequest("No hay Asignaciones para este Usuario.");
-                }
-
-                return Ok(orders);
+            return Ok(orders);
         }
 
-        //----------------------------------------------------------------------------------
-
+        //------------------------------------------------------------------------------------------
         [HttpPost]
         [Route("EnviarMail")]
         public void EnviarMail(EmailRequest request)
-       
+
         {
-           Response respuesta = _mailHelper.SendMail(request.From,request.Smtp,request.Port,request.Password,request.To, request.Subject,request.Body);
+            Response respuesta = _mailHelper.SendMail(request.From, request.Smtp, request.Port, request.Password, request.To, request.Subject, request.Body);
         }
     }
 }
