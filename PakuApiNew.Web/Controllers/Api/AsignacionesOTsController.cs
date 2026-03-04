@@ -25,6 +25,7 @@ namespace PakuApiNew.Web.Controllers.Api
             _fileHelper = fileHelper;
         }
 
+        //----------------------------------------------------------------------------------------
         // PUT: api/AsignacionesOTs/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAsignacionesOT([FromRoute] int id, [FromBody] AsignacionesOTRequest asignacionesOT)
@@ -77,6 +78,22 @@ namespace PakuApiNew.Web.Controllers.Api
                 }
             }
 
+            var imageUrlPhoto = oldasignacionesOT.LinkFoto;
+            if (asignacionesOT.ImageArrayPhoto != null && asignacionesOT.ImageArrayPhoto.Length > 0)
+            {
+                var stream = new MemoryStream(asignacionesOT.ImageArrayPhoto);
+                var guid = Guid.NewGuid().ToString();
+                var file = $"{asignacionesOT.PROYECTOMODULO}-{guid}.jpg";
+                var folder = "wwwroot\\images\\Asignaciones";                 //Alt126 -->  ~
+                var fullPath = $"{folder}/{file}";
+                var response = _fileHelper.UploadPhoto(stream, folder, file);
+
+                if (response)
+                {
+                    imageUrlPhoto = fullPath;
+                }
+            }
+
             oldasignacionesOT.CodigoCierre = asignacionesOT.CodigoCierre;
             oldasignacionesOT.DECO1 = asignacionesOT.DECO1;
             oldasignacionesOT.MarcaModeloId = asignacionesOT.MarcaModeloId;
@@ -105,12 +122,14 @@ namespace PakuApiNew.Web.Controllers.Api
             oldasignacionesOT.ModificadoAPP = 1;
             oldasignacionesOT.CODIGO_PEDIDO_CABECERA = asignacionesOT.CODIGO_PEDIDO_CABECERA;
             oldasignacionesOT.RUTA = asignacionesOT.RUTA;
+            oldasignacionesOT.LinkFoto = imageUrlPhoto;
 
             _dataContext.AsignacionesOTs.Update(oldasignacionesOT);
             await _dataContext.SaveChangesAsync();
             return Ok(asignacionesOT);
         }
 
+        //----------------------------------------------------------------------------------------
         [HttpPost]
         [Route("GetAutonumericos")]
         public async Task<IActionResult> GetAutonumericos(AsignRequest asignRequest)
@@ -243,6 +262,7 @@ namespace PakuApiNew.Web.Controllers.Api
             return Ok(response);
         }
 
+        //----------------------------------------------------------------------------------------
         [HttpPost]
         [Route("GetAutonumericosEjb")]
         public async Task<IActionResult> GetAutonumericosEjb(AsignRequest asignRequest)
@@ -374,6 +394,7 @@ namespace PakuApiNew.Web.Controllers.Api
             return Ok(response);
         }
 
+        //----------------------------------------------------------------------------------------
         [HttpPost]
         [Route("GetControlesEquivalencia/{ProyectoModulo}")]
         public async Task<IActionResult> GetControlesEquivalencia(string ProyectoModulo)
@@ -398,6 +419,7 @@ namespace PakuApiNew.Web.Controllers.Api
             return Ok(controles);
         }
 
+        //----------------------------------------------------------------------------------------
         [HttpPost]
         [Route("GetGrafico01Asignados")]
         public async Task<IActionResult> GetGrafico01Asignados(Grafico01Request grafico01Request)
@@ -465,6 +487,7 @@ namespace PakuApiNew.Web.Controllers.Api
             }
         }
 
+        //----------------------------------------------------------------------------------------
         [HttpPost]
         [Route("GetGrafico01Ejecutados")]
         public async Task<IActionResult> GetGrafico01Ejecutados(Grafico01Request grafico01Request)
@@ -535,6 +558,7 @@ namespace PakuApiNew.Web.Controllers.Api
             }
         }
 
+        //----------------------------------------------------------------------------------------
         [HttpPost]
         [Route("GetConFechaCita/{UserID}")]
         public async Task<IActionResult> GetConFechaCita(int UserID)
@@ -571,6 +595,7 @@ namespace PakuApiNew.Web.Controllers.Api
             return Ok(ordersAux1);
         }
 
+        //----------------------------------------------------------------------------------------
         [HttpPost]
         [Route("PostAsigHistorico")]
         public async Task<IActionResult> PostAsigHistorico([FromBody] AsignacionesOTsHistorico request)
@@ -586,6 +611,7 @@ namespace PakuApiNew.Web.Controllers.Api
             return Ok(request);
         }
 
+        //----------------------------------------------------------------------------------------
         [HttpGet]
         [Route("GetNroRegistroMax")]
         public async Task<IActionResult> GetNroRegistroMax()

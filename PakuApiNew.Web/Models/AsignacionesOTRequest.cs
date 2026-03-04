@@ -18,6 +18,7 @@ namespace PakuApiNew.Web.Models
 
         public byte[] ImageArrayDni { get; set; }
         public byte[] ImageArrayFirma { get; set; }
+        public byte[] ImageArrayPhoto { get; set; }
         public string CP { get; set; }
         public string ZTECNICO { get; set; }
         public string PROVINCIA { get; set; }
@@ -100,14 +101,13 @@ namespace PakuApiNew.Web.Models
         public string Evento3 { get; set; }
         public string Evento4 { get; set; }
 
-
         public string TelefAlternativo1 { get; set; }
         public string TelefAlternativo2 { get; set; }
         public string TelefAlternativo3 { get; set; }
         public string TelefAlternativo4 { get; set; }
 
         public int? elegir { get; set; }
-        
+
         public int ModificadoAPP { get; set; }
 
         //public int? NoMostrarAPP { get; set; }
@@ -115,6 +115,5 @@ namespace PakuApiNew.Web.Models
 
         public string ClienteCompleto => $"{CLIENTE}-{NOMBRE}";
         public string EntreCalles => $"{ENTRECALLE1} y {ENTRECALLE2}";
-
     }
 }
